@@ -1,0 +1,19 @@
+﻿  classe_cliente.cpp
+\classe_cliente.cpp(1,1): error C1083: Não é possível abrir arquivo fonte: 'classe_cliente.cpp': No such file or directory
+  (compilando o arquivo fonte '/classe_cliente.cpp')
+  
+  classe_produto.cpp
+C:\Users\luanf\Desktop\ProjetoFinal\projeto02.c++\classe_produto.cpp(2,10): error C1083: Não é possível abrir arquivo incluir: 'contador.h': No such file or directory
+  classe_venda.cpp
+\classe_venda.cpp(1,1): error C1083: Não é possível abrir arquivo fonte: 'classe_venda.cpp': No such file or directory
+  (compilando o arquivo fonte '/classe_venda.cpp')
+  
+  functions.cpp
+\functions.cpp(1,1): error C1083: Não é possível abrir arquivo fonte: 'functions.cpp': No such file or directory
+  (compilando o arquivo fonte '/functions.cpp')
+  
+  projeto02.c++.cpp
+\projeto02.c++.cpp(1,1): error C1083: Não é possível abrir arquivo fonte: 'projeto02.c++.cpp': No such file or directory
+  (compilando o arquivo fonte '/projeto02.c++.cpp')
+  
+  Gerando Código...
