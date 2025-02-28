@@ -107,7 +107,7 @@ void menuCLiente(Loja& loja) {
 			loja.criarCliente();
 			break;
 		case 2:
-			  
+			loja.EliminarCliente();
 			break;
 		case 3:
 			 

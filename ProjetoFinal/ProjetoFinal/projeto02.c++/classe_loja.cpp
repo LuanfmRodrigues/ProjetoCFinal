@@ -18,10 +18,10 @@ Loja::Loja() : totalProdutos(0),  totalClientes(0)
 	Produto prod3("Calça Puma", 13, 25.00);
 	Produto prod4("Moleto S/M", 5, 10.00);
 
-	Cliente clien1("Luan", 961624758, "rua A");
-	Cliente clien2("hiago", 896162568, "rua b");
-	Cliente clien3("Felipe", 654324758, "rua c");
-	Cliente clien4("rodrigues", 348524758, "rua d");
+	Cliente clien1("Luan", "961624758", "rua A");
+	Cliente clien2("hiago", "896162568", "rua b");
+	Cliente clien3("Felipe", "654324758", "rua c");
+	Cliente clien4("rodrigues", "348524758", "rua d");
 
 	armazenarProduto(prod1);
 	armazenarProduto(prod2);
@@ -258,12 +258,19 @@ void Loja::criarCliente()
         getline(cin, nome);
 
 		cout << "Telefone: ";
-		getline(cin, telefone);
-		if(validarTelefone(telefone)){
-			cout << "Número de telefone válido." << endl;
-    	} else {
-        	cout << "Número de telefone inválido." << endl;
-		}    	
+        while (true) {
+            getline(cin, telefone);  // vai Lê o telefone como string para facilitar a validação.
+			// foi dificil isso.
+            // Valida o telefone
+            if (validarTelefone(telefone)) {
+                cout << "Número de telefone válido." << endl;
+                break;  // Sai do loop se o telefone for válido
+            } else {
+                cout << "Número de telefone inválido. O telefone deve ter 9 dígitos numéricos." << endl;
+                cout << "Digite novamente: ";
+            }
+        }
+   	
 	
 
 		cout << "Morada: ";
@@ -313,7 +320,7 @@ void Loja::EliminarCliente()
             cin.ignore(INT_MAX, '\n');
         }
 
-        int remClie = procurarProduto(idCliente);
+        int remClie = ProcurarCliente(idCliente);
         if (remClie >= 0) {
 			cout << "Cliente a ser removido: \n" 
 				<< "ID " << vecClientes[remClie].getid() << " | "
