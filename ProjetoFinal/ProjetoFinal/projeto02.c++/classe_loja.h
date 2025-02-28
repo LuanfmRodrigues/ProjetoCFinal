@@ -9,14 +9,14 @@ using namespace std;
 
 class Loja {
 private:
-	//vetores clientes e produtos
 	
+	// contador de Produtos eclientes
+	int totalProdutos;
+	int totalClientes;
+	//vetores clientes e produtos
 	Produto vecProdutos[100];
 	Cliente vecClientes[100];
-	 // contador de Produtos eclientes
-	int totalClientes;
-	int totalProdutos;
-
+	
 	
 	
 

@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-Loja::Loja() : totalProdutos(0),  totalClientes(0)
+Loja::Loja() : totalClientes(0), totalProdutos(0)  
 {
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
