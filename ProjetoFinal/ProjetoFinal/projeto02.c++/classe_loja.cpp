@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-Loja::Loja() : totalProdutos(0)
+Loja::Loja() : totalProdutos(0) : totalClientes(0)
 {
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
@@ -58,7 +58,7 @@ void Loja::criarProduto() {
         }
 
         cout << "Produto: \n" << endl;
-        cout << "Nome: " << nome << " | Quantidade: " << quantidade << " | Preço: €" << fixed << setprecision(2) << preco << endl;
+        cout << "Nome: " << nome << " | Quantidade: " << quantidade << " | Preço: €"  << preco << endl;
 
         cout << "Deseja Criar o produto? (s|n) \n";
         cin >> cond;

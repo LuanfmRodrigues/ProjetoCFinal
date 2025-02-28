@@ -2,16 +2,19 @@
 #include<iostream>
 #include<string>
 #include "classe_produto.h"
+#include "cliente.h"
 
 
 using namespace std;
 
 class Loja {
 private:
-	//vetores
+	//vetores clientes e produtos
 	
 	Produto vecProdutos[100];
-	 // contador de Produtos
+	Cliente vecCliente[100];
+	 // contador de Produtos eclientes
+	int toralClientes;
 	int totalProdutos;
 
 	
@@ -29,4 +32,13 @@ public:
 	void impriTodosProd();
 	void RemoverProduto();
 	void addProExiste();
+
+	// Cliente
+	void criarCliente();
+	void MudarNomeCliente();
+	void EliminarCliente();
+	void ProcurarCliente();
+	void ImprimirCliente();
+	void ImprimirTodosClientes();
+	void ArmazenarCliente();
 };
