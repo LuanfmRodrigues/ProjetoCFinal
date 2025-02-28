@@ -12,9 +12,9 @@ private:
 	//vetores clientes e produtos
 	
 	Produto vecProdutos[100];
-	Cliente vecCliente[100];
+	Cliente vecClientes[100];
 	 // contador de Produtos eclientes
-	int toralClientes;
+	int totalClientes;
 	int totalProdutos;
 
 	

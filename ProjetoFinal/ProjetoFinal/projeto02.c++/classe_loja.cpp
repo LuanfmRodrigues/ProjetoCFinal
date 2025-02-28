@@ -1,4 +1,5 @@
 #include "classe_loja.h"
+#include "cliente.h"
 #include "classe_produto.h"
 #include <string>
 #include <iomanip>
@@ -9,7 +10,7 @@ using namespace std;
 
 
 
-Loja::Loja() : totalProdutos(0) : totalClientes(0)
+Loja::Loja() : totalProdutos(0),  totalClientes(0)
 {
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
