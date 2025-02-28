@@ -34,10 +34,6 @@ Loja::Loja() : totalClientes(0), totalProdutos(0)
 	ArmazenarCliente(clien3);
 	ArmazenarCliente(clien4);
 }
-// Clientes
-
-
-// produtos
 
 void Loja::criarProduto() {
 	system("cls"); 
@@ -190,9 +186,11 @@ void Loja::addProExiste()
         cout << "Nenhum produto no estoque.\n";
         return;
     }
-	cout << "_______________________________________________ \n";
+	cout << "________________________________________" << endl;
+	cout << "                                        " << endl;
 	impriTodosProd();
-	cout << "_______________________________________________ \n";
+	cout << "                                        " << endl;
+	cout << "________________________________________" << endl;
 	char valid3;
 	
 	int posicao, novaQuant,idProduto;
@@ -230,7 +228,7 @@ void Loja::addProExiste()
 		}
 		vecProdutos[posicao].setQuantidade(vecProdutos[posicao].getQuantidade() + novaQuant);
 		cout << "Quantidade Adicionada com sucesso!!! \n" << endl;
-		cout << "Deseja adcionar quantidade a mais? (s|n) \n";
+		cout << "Deseja adicionar quantidade a mais? (s|n) \n";
 		cin >> valid3;
 	} while (valid3 == 's' || valid3 == 'S');
 	return ;
@@ -277,7 +275,7 @@ void Loja::criarCliente()
 		getline(cin, morada);
 
 		cout << "\nDetalhes do Cliente:\n";
-		cout << "Nome: " << nome << " | Telefone: " << telefone << " | morada: "  << morada<< endl;
+		cout << "Nome: " << nome << " | Telefone: " << telefone << " | Morada: "  << morada<< endl;
 
 		cout << "Deseja Criar o Cliente? (s|n) \n";
 		cin >> cond;
@@ -301,6 +299,24 @@ void Loja::criarCliente()
 	
 }
 
+void Loja::EditarCliente()
+{
+	if (totalClientes == 0) {
+        cout << "Nenhum cliente encontrado.\n";
+        return;
+    }
+	cout << "________________________________________" << endl;
+	cout << "                                        " << endl;
+	ImprimirTodosClientes();
+	cout << "                                        " << endl;
+	cout << "________________________________________" << endl;
+	do
+	{
+		/* code */
+	} while (condition);
+	
+}
+
 void Loja::EliminarCliente()
 {
 	system("cls"); 
@@ -321,14 +337,17 @@ void Loja::EliminarCliente()
         }
 
         int remClie = ProcurarCliente(idCliente);
+
         if (remClie >= 0) {
 			cout << "Cliente a ser removido: \n" 
 				<< "ID " << vecClientes[remClie].getid() << " | "
 				<< "Nome "<< vecClientes[remClie].getnome() << " | "
 				<< "Telefone " << vecClientes[remClie].gettelefone() << " | "
 				<< "Morada " << vecClientes[remClie].getmorada() << endl;
+
             cout << "Deseja realmente remover o cliente? (s/n) ";
             cin >> valid;
+
             if (valid == 's' || valid == 'S') {
                 for (int i = remClie; i < totalClientes - 1; i++) {
                     vecClientes[i] = vecClientes[i + 1];

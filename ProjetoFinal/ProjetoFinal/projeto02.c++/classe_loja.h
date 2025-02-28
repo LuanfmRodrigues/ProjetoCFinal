@@ -13,11 +13,11 @@ private:
 	// contador de Produtos eclientes
 	int totalProdutos;
 	int totalClientes;
+
+	
 	//vetores clientes e produtos
 	Produto vecProdutos[100];
-	Cliente vecClientes[100];
-	
-	
+	Cliente vecClientes[100];	
 	
 
 public:
