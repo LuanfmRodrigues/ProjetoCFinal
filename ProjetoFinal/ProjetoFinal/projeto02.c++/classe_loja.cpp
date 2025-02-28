@@ -67,7 +67,7 @@ void Loja::criarProduto() {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
-        cout << "Produto: \n" << endl;
+        cout << "Produto criado: \n" << endl;
         cout << "Nome: " << nome << " | Quantidade: " << quantidade << " | Preço: €"  << preco << endl;
 
         cout << "Deseja Criar o produto? (s|n) \n";
@@ -206,6 +206,7 @@ void Loja::addProExiste()
             cout << "Id inválido. Digite um número positivo: ";
             cin.clear();
             cin.ignore(INT_MAX, '\n');
+			
         }
 
 		posicao = procurarProduto(idProduto);
@@ -301,7 +302,7 @@ void Loja::criarCliente()
 
 void Loja::EditarCliente()
 {
-	if (totalClientes == 0) {
+	/*if (totalClientes == 0) {
         cout << "Nenhum cliente encontrado.\n";
         return;
     }
@@ -312,8 +313,8 @@ void Loja::EditarCliente()
 	cout << "________________________________________" << endl;
 	do
 	{
-		/* code */
-	} while (condition);
+		
+	} while (condition);*/
 	
 }
 
