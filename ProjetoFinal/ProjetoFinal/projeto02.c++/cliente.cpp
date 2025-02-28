@@ -5,12 +5,12 @@ int Cliente::contClie = 1;
 Cliente::Cliente()
 {
 	id = 0;
-	nome = "";
-	telefone = 0;
-	morada = "";
+	nome = "Cliente";
+	telefone = "telefone";
+	morada = "Morada";
 	
 }
-Cliente::Cliente(string Nome, string morada, int telefone)
+Cliente::Cliente(string nome, string morada, string telefone)
 {
     id = contClie++;
 	this->nome = nome;
@@ -28,7 +28,7 @@ int Cliente::getid() const
     return id;
 }
 
-int Cliente::gettelefone() const
+string Cliente::gettelefone() const
 {
     return telefone;
 }
@@ -48,7 +48,7 @@ void Cliente::setid(int idCliente)
     this-> id = idCliente;
 }
 
-void Cliente::settelefone(int telefone)
+void Cliente::settelefone(string telefone)
 {
     this->telefone = telefone;
 }

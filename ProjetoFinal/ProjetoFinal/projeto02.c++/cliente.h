@@ -9,22 +9,22 @@ class Cliente {
 private:
 	static int contClie;
 	int id;
-	string nome, morada;
-	int telefone;
+	string nome, morada, telefone;
+	
 
 public:
 
 	Cliente();
-	Cliente(string nome,string morada, int telefone);
+	Cliente(string nome,string morada, string telefone);
 
 	string getnome() const;
 	int getid()const;
-	int gettelefone()const;
+	string gettelefone()const;
 	string getmorada()const;
 
 	void setnome(string nome);
 	void setid(int id);
-	void settelefone(int telefone);
+	void settelefone(string telefone);
 	void setmorada(string morada);
 
 };

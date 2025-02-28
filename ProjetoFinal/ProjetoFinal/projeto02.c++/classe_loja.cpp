@@ -245,7 +245,7 @@ void Loja::criarCliente()
 {
 	system("cls"); 
 	string nome,telefone,morada;
-	char valid4, valid5, cond;
+	char valid4, cond;
 
 	cin.ignore();
 	do
