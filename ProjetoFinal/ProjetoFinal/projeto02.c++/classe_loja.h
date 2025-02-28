@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include<iostream>
 #include<string>
 #include "classe_produto.h"
@@ -25,7 +25,7 @@ public:
 	//produtos	
 	void criarProduto();
 	void armazenarProduto(const Produto& Produto);
-	int procurarProduto(const string& Nome);
+	int procurarProduto(int idProduto);
 	void impriTodosProd();
 	void RemoverProduto();
 	void addProExiste();

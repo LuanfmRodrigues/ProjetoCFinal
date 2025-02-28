@@ -170,7 +170,7 @@ int main()
     setlocale(LC_ALL, "portuguese");
 	Loja loja;
 	menuPrincipal(loja); 
-	menuStock(loja);
+	
      
     return 0; 
 }

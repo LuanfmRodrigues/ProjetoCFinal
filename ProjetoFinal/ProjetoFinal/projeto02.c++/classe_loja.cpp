@@ -3,6 +3,7 @@
 #include <string>
 #include <iomanip>
 #include <iostream>
+#include <limits> 
 #include <climits>
 using namespace std;
 
@@ -24,64 +25,57 @@ Loja::Loja() : totalProdutos(0)
 
 // produtos
 
-void Loja::criarProduto()
-{
-	if (totalProdutos >= 100) {
-        cout << "Estoque esta Cheio!!\n";
-        return;
-    }
-
-    string nome;
-	char  cond, valid1;
+void Loja::criarProduto() {
+	system("cls"); 
+	string nome;
+    char cond, valid1;
     int quantidade;
     float preco;
 
-    
-	do
-	{
-		cout << "________________________________________" << endl;
-		cout << "        Adicionar Novo Produto          " << endl;
-		cout << "________________________________________" << endl;
-		cout << "Nome do produto: ";
-		cin.ignore();
-		getline(cin, nome);
-		cout << "Quantidade: ";
-		cin >> quantidade;
-		while (cin.fail() || quantidade <= 0) {
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-			cout << "Quantidade invalida.\n";
-			cout << "Qual a quantidade: ";
-			cin >> quantidade;
-		}
-		cout << "Preço: ";
-		cin >> preco;
+    cin.ignore();
+    do {
+        cout << "________________________________________" << endl;
+        cout << "        Adicionar Novo Produto          " << endl;
+        cout << "________________________________________" << endl;
 
-		cout << "Produto: \n" << endl;
-		cout << "ID: " << totalProdutos + 1 << " | Nome: " << nome << " | Quantidade: " << quantidade << " | Preço: \n" << preco << endl;
-		cout << "deseja Criar o produto? (s|n) \n";
-		cin >> cond;
-		if (cond == 's' || cond == 'S')
-		{
-			Produto novoProduto(nome, quantidade, preco);
-			armazenarProduto(novoProduto);
-			cout << "_______________________________" << endl;
-			cout << "Produto adicionado com sucesso!" << endl;
-			cout << "_______________________________" << endl;
+        cout << "Nome do produto: ";
+        getline(cin, nome);
 
-			cout << "Por favor, insira os dados novamente.\n";
-		}
-		cout << "Deseja criar mais Produtos? (s|n) \n";
-		cin >> valid1;
+        // Valida se a quantidade é um números positivos
+        cout << "Quantidade: ";
+        while (!(cin >> quantidade) || quantidade <= 0) {
+            cout << "Quantidade inválida. Digite um número inteiro positivo: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpa a memoria temporaria
+        }
 
-		
+        // Valida se o preço é um números positivos
+        cout << "Preço: ";
+        while (!(cin >> preco) || preco <= 0) {
+            cout << "Preço inválido. Digite um valor positivo: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
+        cout << "Produto: \n" << endl;
+        cout << "Nome: " << nome << " | Quantidade: " << quantidade << " | Preço: €" << fixed << setprecision(2) << preco << endl;
 
-	} while (valid1 == 's' || valid1 == 'S');
-	return 0;
+        cout << "Deseja Criar o produto? (s|n) \n";
+        cin >> cond;
+        cin.ignore();
 
-			
-    
+        if (cond == 's' || cond == 'S') {
+            
+            cout << "Produto adicionado com sucesso!" << endl;
+        } else {
+            cout << "Produto não foi criado! \n";
+        }
+
+        cout << "Deseja criar mais produtos? (s|n) \n";
+        cin >> valid1;
+        cin.ignore();
+
+    } while (valid1 == 's' || valid1 == 'S');
 }
 
 void Loja::armazenarProduto(const Produto& Produto)
@@ -92,17 +86,16 @@ void Loja::armazenarProduto(const Produto& Produto)
 	}	
 	vecProdutos[totalProdutos] = Produto;
 	totalProdutos++;
-	cout << "Produto foi adicionado com sucesso!\n";
 	return;
   
     
 }
 
-int Loja::procurarProduto(const string& Nome)
+int Loja::procurarProduto(int idProduto)
 {
 	for (int i = 0; i < totalProdutos; i++)
 	{
-		if(vecProdutos[i].getNome() == Nome){	
+		if(vecProdutos[i].getId() == idProduto){	
 		return i;	
 		}
 		
@@ -131,46 +124,48 @@ void Loja::impriTodosProd()
 
 void Loja::RemoverProduto()
 {
-	char valid,valid2;
-	do {
+	system("cls"); 
+    char valid, valid2;
+    do {
+        if (totalProdutos == 0) {
+            cout << "Nenhum produto no estoque.\n";
+            return;
+        }
+        impriTodosProd();
 
-		if (totalProdutos == 0) {
-			cout << "Nenhum produto no estoque.\n";
-			return;
-		}
-		impriTodosProd();
-		string Nome;
-		cout << "Nome do produto a ser removido: ";
-		cin.ignore();
-		getline(cin, Nome);
+        int idProduto;
+        cout << "Qual o ID do produto: ";
+        while (!(cin >> idProduto) || idProduto <= 0) {
+            cout << "ID inválida. Digite um número positivo: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+        }
 
-		int remPro = procurarProduto(Nome);
-		if (remPro >= 0) {
-			for (int i = remPro; i < totalProdutos - 1; i++) {
-				vecProdutos[i] = vecProdutos[i + 1];
-				cout << remPro;
-			}
-			cout << "Deseja realmente Excluir o produto \n";
-			cin >> valid;
-			if (valid == 's' || valid == 'S') {
-				vecProdutos[totalProdutos - 1] = Produto();
-				totalProdutos--;
-				cout << "Produto removido com Sucesso! " << endl;
-			}
-
-		}
-		else
-		{
-			cout << "Produto nao encontrado " << endl;
-		}
-		cout << "Deseja remover mais algum produto (s\n) \n";
-		cin >> valid2;
-	}while (valid2 == 's' || valid2 == 'S');
-	return 0;
-
-
-	
+        int remPro = procurarProduto(idProduto);
+        if (remPro >= 0) {
+			cout << "Produto  a ser excluido é: \n" 
+				<< "ID " << vecProdutos[remPro].getId() << " | "
+				<< "Nome "<< vecProdutos[remPro].getNome() << " | "
+				<< "Quantidade " << vecProdutos[remPro].getQuantidade() << " | "
+				<< "Preço € " << vecProdutos[remPro].getPreco() << endl;
+            cout << "Deseja realmente excluir o produto? (s/n) ";
+            cin >> valid;
+            if (valid == 's' || valid == 'S') {
+                for (int i = remPro; i < totalProdutos - 1; i++) {
+                    vecProdutos[i] = vecProdutos[i + 1];
+                }
+                totalProdutos--; 
+                cout << "Produto removido com sucesso!\n";
+            }
+        } else {
+            cout << "Produto não encontrado.\n";
+        }
+        
+        cout << "Deseja remover mais algum produto? (s/n) ";
+        cin >> valid2;
+    } while (valid2 == 's' || valid2 == 'S');
 }
+
 
 void Loja::addProExiste()
 {
@@ -178,9 +173,12 @@ void Loja::addProExiste()
         cout << "Nenhum produto no estoque.\n";
         return;
     }
+	cout << "_______________________________________________ \n";
+	impriTodosProd();
+	cout << "_______________________________________________ \n";
 	char valid3;
-	string nome;
-	int posicao, novaQuant;
+	
+	int posicao, novaQuant,idProduto;
 
 	do
 	{
@@ -188,11 +186,14 @@ void Loja::addProExiste()
 		cout << "    Adicionar quantidade ao Produto     " << endl;
 		cout << "________________________________________" << endl;
 
-		cout << "Nome do produto: ";
-		cin.ignore();
-		getline(cin, nome);
+		cout << "ID do produto: ";
+        while (!(cin >> idProduto) || idProduto <= 0) {
+            cout << "Id inválida. Digite um número positivo: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+        }
 
-		posicao = procurarProduto(nome);
+		posicao = procurarProduto(idProduto);
 
 		if (posicao == -1)
 		{
@@ -215,7 +216,7 @@ void Loja::addProExiste()
 		cout << "Deseja adcionar quantidade a mais? (s|n) \n";
 		cin >> valid3;
 	} while (valid3 == 's' || valid3 == 'S');
-	return 0;
+	return ;
 
 
 	
