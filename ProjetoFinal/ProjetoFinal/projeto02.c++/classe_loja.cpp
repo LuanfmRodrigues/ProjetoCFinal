@@ -6,6 +6,7 @@
 #include <iostream>
 #include <limits> 
 #include <climits>
+#include "validacoes.cpp"
 using namespace std;
 
 
@@ -22,6 +23,7 @@ Loja::Loja() : totalProdutos(0),  totalClientes(0)
 	armazenarProduto(prod3);
 	armazenarProduto(prod4);
 }
+// Clientes
 
 
 // produtos
@@ -222,5 +224,55 @@ void Loja::addProExiste()
 
 	
 
+	
+}
+// Clientes
+void Loja::criarCliente()
+{
+	system("cls"); 
+	string nome,telefone,morada;
+	char valid4, valid5, cond;
+
+	cin.ignore();
+	do
+	{
+		cout << "________________________________________" << endl;
+        cout << "              Criar Cliente             " << endl;
+        cout << "________________________________________" << endl;
+
+		cout << "Nome do Cliente: ";
+        getline(cin, nome);
+
+		cout << "Telefone: ";
+		getline(cin, telefone);
+		if(validarTelefone(telefone)){
+			cout << "Número de telefone válido." << endl;
+    	} else {
+        	cout << "Número de telefone inválido." << endl;
+		}    	
+	
+
+		cout << "Morada: ";
+		cin >> morada;
+
+		cout << "Nome: " << nome << " | Telefone: " << telefone << " | morada: "  << morada<< endl;
+
+		cout << "Deseja Criar o Cliente? (s|n) \n";
+		cin >> cond;
+		cin.ignore();
+
+		if (cond == 's' || cond == 'S') {
+			
+			cout << "Cliente criado com sucesso!" << endl;
+		} else {
+			cout << "Cliente não foi criado! \n";
+		}
+
+		cout << "Deseja criar mais um cliente? (s|n) \n";
+		cin >> valid4;
+		cin.ignore();
+
+		
+	} while (valid4 == 's' || valid4 == 'S');
 	
 }
