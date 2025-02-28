@@ -35,10 +35,9 @@ public:
 
 	// Cliente
 	void criarCliente();
-	void MudarNomeCliente();
+	void EditarCliente();
 	void EliminarCliente();
-	void ProcurarCliente();
-	void ImprimirCliente();
+	int ProcurarCliente(int idCliente);
 	void ImprimirTodosClientes();
-	void ArmazenarCliente();
+	void ArmazenarCliente(const Cliente& Cliente);
 };

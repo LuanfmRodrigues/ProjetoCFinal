@@ -18,10 +18,21 @@ Loja::Loja() : totalProdutos(0),  totalClientes(0)
 	Produto prod3("Calça Puma", 13, 25.00);
 	Produto prod4("Moleto S/M", 5, 10.00);
 
+	Cliente clien1("Luan", 961624758, "rua A");
+	Cliente clien2("hiago", 896162568, "rua b");
+	Cliente clien3("Felipe", 654324758, "rua c");
+	Cliente clien4("rodrigues", 348524758, "rua d");
+
 	armazenarProduto(prod1);
 	armazenarProduto(prod2);
 	armazenarProduto(prod3);
 	armazenarProduto(prod4);
+
+
+	ArmazenarCliente(clien1);
+	ArmazenarCliente(clien2);
+	ArmazenarCliente(clien3);
+	ArmazenarCliente(clien4);
 }
 // Clientes
 
@@ -68,8 +79,11 @@ void Loja::criarProduto() {
         cin.ignore();
 
         if (cond == 's' || cond == 'S') {
-            
+
+            Produto novoPro(nome, quantidade,preco);
+			armazenarProduto(novoPro);
             cout << "Produto adicionado com sucesso!" << endl;
+
         } else {
             cout << "Produto não foi criado! \n";
         }
@@ -144,17 +158,17 @@ void Loja::RemoverProduto()
             cin.ignore(INT_MAX, '\n');
         }
 
-        int remPro = procurarProduto(idProduto);
-        if (remPro >= 0) {
+        int remProd = procurarProduto(idProduto);
+        if (remProd >= 0) {
 			cout << "Produto  a ser excluido é: \n" 
-				<< "ID " << vecProdutos[remPro].getId() << " | "
-				<< "Nome "<< vecProdutos[remPro].getNome() << " | "
-				<< "Quantidade " << vecProdutos[remPro].getQuantidade() << " | "
-				<< "Preço € " << vecProdutos[remPro].getPreco() << endl;
+				<< "ID " << vecProdutos[remProd].getId() << " | "
+				<< "Nome "<< vecProdutos[remProd].getNome() << " | "
+				<< "Quantidade " << vecProdutos[remProd].getQuantidade() << " | "
+				<< "Preço € " << vecProdutos[remProd].getPreco() << endl;
             cout << "Deseja realmente excluir o produto? (s/n) ";
             cin >> valid;
             if (valid == 's' || valid == 'S') {
-                for (int i = remPro; i < totalProdutos - 1; i++) {
+                for (int i = remProd; i < totalProdutos - 1; i++) {
                     vecProdutos[i] = vecProdutos[i + 1];
                 }
                 totalProdutos--; 
@@ -191,7 +205,7 @@ void Loja::addProExiste()
 
 		cout << "ID do produto: ";
         while (!(cin >> idProduto) || idProduto <= 0) {
-            cout << "Id inválida. Digite um número positivo: ";
+            cout << "Id inválido. Digite um número positivo: ";
             cin.clear();
             cin.ignore(INT_MAX, '\n');
         }
@@ -253,8 +267,9 @@ void Loja::criarCliente()
 	
 
 		cout << "Morada: ";
-		cin >> morada;
+		getline(cin, morada);
 
+		cout << "\nDetalhes do Cliente:\n";
 		cout << "Nome: " << nome << " | Telefone: " << telefone << " | morada: "  << morada<< endl;
 
 		cout << "Deseja Criar o Cliente? (s|n) \n";
@@ -263,6 +278,8 @@ void Loja::criarCliente()
 
 		if (cond == 's' || cond == 'S') {
 			
+			Cliente novoCliente(nome, telefone, morada);
+            ArmazenarCliente(novoCliente);
 			cout << "Cliente criado com sucesso!" << endl;
 		} else {
 			cout << "Cliente não foi criado! \n";
@@ -275,4 +292,90 @@ void Loja::criarCliente()
 		
 	} while (valid4 == 's' || valid4 == 'S');
 	
+}
+
+void Loja::EliminarCliente()
+{
+	system("cls"); 
+    char valid, valid2;
+    do {
+        if (totalProdutos == 0) {
+            cout << "Nenhum produto no estoque.\n";
+            return;
+        }
+        impriTodosProd();
+
+        int idCliente;
+        cout << "Qual o ID do produto: ";
+        while (!(cin >> idCliente) || idCliente <= 0) {
+            cout << "ID inválida. Digite um número positivo: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+        }
+
+        int remClie = procurarProduto(idCliente);
+        if (remClie >= 0) {
+			cout << "Cliente a ser removido: \n" 
+				<< "ID " << vecClientes[remClie].getid() << " | "
+				<< "Nome "<< vecClientes[remClie].getnome() << " | "
+				<< "Telefone " << vecClientes[remClie].gettelefone() << " | "
+				<< "Morada " << vecClientes[remClie].getmorada() << endl;
+            cout << "Deseja realmente remover o cliente? (s/n) ";
+            cin >> valid;
+            if (valid == 's' || valid == 'S') {
+                for (int i = remClie; i < totalClientes - 1; i++) {
+                    vecClientes[i] = vecClientes[i + 1];
+                }
+                totalClientes--; 
+                cout << "Cliente removido com sucesso!\n";
+            }
+        } else {
+            cout << "Cliente não encontrado.\n";
+        }
+        
+        cout << "Deseja remover mais algum cliente? (s/n) ";
+        cin >> valid2;
+    } while (valid2 == 's' || valid2 == 'S');
+}
+
+int Loja::ProcurarCliente(int idCliente)
+{
+	for (int i = 0; i < totalClientes; i++){
+	
+		if(vecClientes[i].getid() == idCliente){	
+		return i;	
+		}
+		
+	}
+	return -1;
+	
+}
+
+void Loja::ImprimirTodosClientes()
+{
+	if(totalClientes == 0){
+		cout << "Nenhum Cliente encontrado. " << endl;
+		return;
+	}
+	cout << "________________________________________" << endl;
+    cout << "              Clientes                  " << endl;
+    cout << "________________________________________" << endl;
+
+	for(int i = 0; i < totalClientes;i++){
+		cout << "ID " << vecClientes[i].getid() << " | "
+			 << "Nome "<< vecClientes[i].getnome() << " | "
+			 << "Telefone " << vecClientes[i].gettelefone() << " | "
+			 << "Morada " << vecClientes[i].getmorada() << endl;
+	}
+}
+
+void Loja::ArmazenarCliente(const Cliente &Cliente)
+{
+	if(totalClientes >= 100) {
+		cout << "Limite de Cadastros atingido!! \n";
+		return;
+	}	
+	vecClientes[totalClientes] = Cliente;
+	totalClientes++;
+	return;
 }

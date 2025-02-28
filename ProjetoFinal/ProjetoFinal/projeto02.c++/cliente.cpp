@@ -43,9 +43,9 @@ void Cliente::setnome(string nome)
     this->nome = nome;
 }
 
-void Cliente::setid(int id)
+void Cliente::setid(int idCliente)
 {
-    this-> id = id;
+    this-> id = idCliente;
 }
 
 void Cliente::settelefone(int telefone)

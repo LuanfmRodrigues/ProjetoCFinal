@@ -4,6 +4,8 @@
 #include "classe_produto.cpp"
 #include "Classe_loja.cpp"
 #include "classe_loja.h"
+#include "cliente.h"
+#include "cliente.cpp"
 
 
 void menuStock(Loja& loja) 
@@ -82,7 +84,7 @@ void menuRelatorio() {
 	} while (sel3 != 4);
 }
 
-void menuCLiente() {  
+void menuCLiente(Loja& loja) {  
 
 	int sel4;
 	do
@@ -102,7 +104,7 @@ void menuCLiente() {
 		switch (sel4)
 		{
 		case 1:
-			
+			loja.criarCliente();
 			break;
 		case 2:
 			  
@@ -129,7 +131,7 @@ void menuPrincipal(Loja& loja) {
 		cout << "______________________________________" << endl;
 		cout << "           MENU PRINCIPAL             " << endl;
 		cout << "______________________________________" << endl;
-		cout << "Selecione a opcao para continuar: " << endl;
+		cout << "  Selecione a opcao para continuar:   " << endl;
 		cout << "______________________________________" << endl;
 		cout << "             1 - Vendas               " << endl;
 		cout << "             2 - Stock                " << endl;
@@ -150,7 +152,7 @@ void menuPrincipal(Loja& loja) {
 			    
 			break;
 		case 4:
-			
+			menuCLiente(loja);
 			break;
 		case 5:
 			cout << "Saindo..." << endl;
