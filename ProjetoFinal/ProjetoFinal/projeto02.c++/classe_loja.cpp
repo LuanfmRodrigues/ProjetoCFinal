@@ -11,7 +11,7 @@ using namespace std;
 
 
 
-Loja::Loja() : totalClientes(0), totalProdutos(0)  
+Loja::Loja() :  totalProdutos(0) ,totalClientes(0)
 {
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
@@ -215,6 +215,14 @@ void Loja::addProExiste()
 		{
 			cout << "Produto não encontrado! \n";
 			return;
+		}else{
+			if (idProduto >= 0) {
+				cout << "Produto  a ser excluido é: \n" 
+					<< "ID " << vecProdutos[idProduto].getId() << " | "
+					<< "Nome "<< vecProdutos[idProduto].getNome() << " | "
+					<< "Quantidade " << vecProdutos[idProduto].getQuantidade() << " | "
+					<< "Preço € " << vecProdutos[idProduto].getPreco() << endl;;
+			}
 		}
 
 		cout << "Quantidade a mais: ";
@@ -302,10 +310,15 @@ void Loja::criarCliente()
 
 void Loja::EditarCliente()
 {
-	/*if (totalClientes == 0) {
+	if (totalClientes == 0) {
         cout << "Nenhum cliente encontrado.\n";
         return;
+	
     }
+	string NovoNome;
+	int  idcliente, posicao;
+	char valid;
+
 	cout << "________________________________________" << endl;
 	cout << "                                        " << endl;
 	ImprimirTodosClientes();
@@ -313,8 +326,42 @@ void Loja::EditarCliente()
 	cout << "________________________________________" << endl;
 	do
 	{
-		
-	} while (condition);*/
+		cout << "________________________________________" << endl;
+		cout << "             Editar cliente             " << endl;
+		cout << "________________________________________" << endl;
+
+		cout << "ID do Cliente ";
+        while (!(cin >> idcliente) || idcliente <= 0) {
+            cout << "Id inválido. Digite um número positivo: ";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+			
+        }
+		posicao = ProcurarCliente(idcliente);
+
+		if(posicao == -1)
+		{
+			cout << "Cliente não encontrado!! ";
+			return;
+		}else{
+			if (idcliente >= 0) {
+				cout << "Cliente a ser editado: \n" 
+					<< "ID " << vecClientes[idcliente].getid() << " | "
+					<< "Nome "<< vecClientes[idcliente].getnome() << " | "
+					<< "telefone " << vecClientes[idcliente].gettelefone() << " | "
+					<< "morada " << vecClientes[idcliente].getmorada() << endl;;
+			}
+		}
+		cout << "Edite o nome do cliente \n";
+		getline(cin, NovoNome);
+
+		vecClientes[posicao].setnome(NovoNome);
+		cout << "Nome editado com sucesso! " << endl;
+		cout << "Deseja editar mais algum cliente? (s|n) \n";
+		cin >> valid;
+		cin.ignore();
+
+	} while (valid == 's' || valid == 'S');
 	
 }
 

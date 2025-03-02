@@ -110,7 +110,7 @@ void menuCLiente(Loja& loja) {
 			loja.EliminarCliente();
 			break;
 		case 3:
-			 
+			loja.EditarCliente();			
 			break;
 		case 4:
 			cout << "Saindo..." << endl;
