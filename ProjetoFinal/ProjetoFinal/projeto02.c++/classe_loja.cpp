@@ -231,7 +231,8 @@ void Loja::addProExiste()
 
 		cout << "Quantidade a mais: ";
 		cin >> novaQuant;
-		while (cin.fail() || novaQuant <= 0)
+		while (cin.fail() || novaQuant <= 0 || cin.peek() != '\n')
+		//cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
 		{
 			cin.clear();
 			cin.ignore(INT_MAX, '\n');
