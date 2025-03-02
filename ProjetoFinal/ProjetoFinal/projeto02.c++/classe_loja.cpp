@@ -222,10 +222,10 @@ void Loja::addProExiste()
 			return;
 		}else{			
 			cout << "Produto  a ser excluido é: \n" 
-				<< "ID " << vecProdutos[idProduto].getId() << " | "
-				<< "Nome "<< vecProdutos[idProduto].getNome() << " | "
-				<< "Quantidade " << vecProdutos[idProduto].getQuantidade() << " | "
-				<< "Preço € " << vecProdutos[idProduto].getPreco() << endl;;
+				<< "ID " << vecProdutos[posicao].getId() << " | "
+				<< "Nome "<< vecProdutos[posicao].getNome() << " | "
+				<< "Quantidade " << vecProdutos[posicao].getQuantidade() << " | "
+				<< "Preço € " << vecProdutos[posicao].getPreco() << endl;;
 			
 		}
 

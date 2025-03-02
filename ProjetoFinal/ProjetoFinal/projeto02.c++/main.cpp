@@ -7,7 +7,45 @@
 #include "cliente.h"
 #include "cliente.cpp"
 
+void menuVendas()
+{
+	int sel;
+	do
+	{
+		cout << "______________________________________" << endl;
+		cout << "               MENU VENDAS            " << endl;
+		cout << "______________________________________" << endl;
+		cout << "  Selecione a opcao para continuar:   " << endl;
+		cout << "______________________________________" << endl;
+		cout << "          1 - Stock Produtos          " << endl;
+		cout << "          2 - Lista Clientes          " << endl;
+		cout << "              3 - Vendas              " << endl;
+		cout << "              4 - sair                " << endl;
+		cout << "______________________________________" << endl;
+		cin >> sel;
+		switch (sel)
+		{
+		case 1:
+			
+			break;
+		case 2:
 
+			break;		
+		case 3:
+
+			break;		
+		case 4:
+			cout << "Saindo..." << endl;
+			break;
+		default:
+			cout << "Opcao invalida!" << endl;
+			break;
+		}
+
+		
+	} while (sel != 4);
+	
+}
 void menuStock(Loja& loja) 
 {
 
@@ -20,7 +58,7 @@ void menuStock(Loja& loja)
 		cout << "______________________________________" << endl;
 		cout << "  Selecione a opcao para continuar:   " << endl;
 		cout << "______________________________________" << endl;
-		cout << "       1 - Cria��o de Produto       " << endl;
+		cout << "          1 - Criar o Produto         " << endl;
 		cout << "     2 - Adicionar Produto Existente  " << endl;
 		cout << "          3 - Excluir Produto         " << endl;
 		cout << "              4 - Stock               " << endl;

@@ -1,9 +1,8 @@
-	#pragma once
+#pragma once
 #include<iostream>
 #include<string>
 #include "classe_produto.h"
 #include "cliente.h"
-
 
 using namespace std;
 
@@ -14,7 +13,6 @@ private:
 	int totalProdutos;
 	int totalClientes;
 
-	
 	//vetores clientes e produtos
 	Produto vecProdutos[100];
 	Cliente vecClientes[100];	
