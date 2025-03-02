@@ -14,15 +14,17 @@ void menuStock(Loja& loja)
 	int sel2;
 	do
 	{
+		system("cls");
 		cout << "______________________________________" << endl;
 		cout << "               MENU STOCK             " << endl;
 		cout << "______________________________________" << endl;
-		cout << "Selecione a opcao para continuar: " << endl;
+		cout << "  Selecione a opcao para continuar:   " << endl;
 		cout << "______________________________________" << endl;
-		cout << "        1 - Cria��o de Produto        " << endl;
+		cout << "       1 - Cria��o de Produto       " << endl;
 		cout << "     2 - Adicionar Produto Existente  " << endl;
 		cout << "          3 - Excluir Produto         " << endl;
-		cout << "              4 - Voltar              " << endl;
+		cout << "              4 - Stock               " << endl;
+		cout << "              5 - Voltar              " << endl;
 		cout << "______________________________________" << endl;
 		cin >> sel2;
 		switch (sel2)
@@ -37,13 +39,16 @@ void menuStock(Loja& loja)
 			loja.RemoverProduto();
 			break;
 		case 4:
+			loja.impriTodosProd();			
+			break;
+		case 5:
 			cout << "Saindo..." << endl;
 			break;
 		default:
 			cout << "Opcao invalida!" << endl;
 			break;
 		}
-	} while (sel2 != 4);
+	} while (sel2 != 5);
 
 }
 
@@ -52,6 +57,7 @@ void menuRelatorio() {
 	int sel3;
 	do
 	{
+		system("cls");
 		cout << "______________________________________" << endl;
 		cout << "           MENU RELAT�RIO             " << endl;
 		cout << "______________________________________" << endl;
@@ -93,12 +99,13 @@ void menuCLiente(Loja& loja) {
 		cout << "______________________________________" << endl;
 		cout << "             MENU CLIENTE             " << endl;
 		cout << "______________________________________" << endl;
-		cout << "  Selecione a opcao para continuar: "   << endl;
+		cout << "  Selecione a opcao para continuar:   " << endl;
 		cout << "______________________________________" << endl;
 		cout << "           1 - Criar Cliente          " << endl;
 		cout << "           2 - Excluir Cliente        " << endl;
 		cout << "           3 - Editar CLiente         " << endl;
-		cout << "           4 - Voltar                 " << endl;
+		cout << "           4 - Clientes               " << endl;
+		cout << "           5 - Voltar                 " << endl;
 		cout << "______________________________________" << endl;
 		cin >> sel4;
 		switch (sel4)
@@ -113,13 +120,17 @@ void menuCLiente(Loja& loja) {
 			loja.EditarCliente();			
 			break;
 		case 4:
+			loja.impriTodosProd();
+			
+			break;
+		case 5:
 			cout << "Saindo..." << endl;
 			break;
 		default:
 			cout << "Opcao invalida!" << endl;
 			break;
 		}
-	} while (sel4 != 4);
+	} while (sel4 != 5);
 }
 
 void menuPrincipal(Loja& loja) { 
@@ -128,6 +139,7 @@ void menuPrincipal(Loja& loja) {
 	int sel1;
 	do
 	{
+		system("cls");
 		cout << "______________________________________" << endl;
 		cout << "           MENU PRINCIPAL             " << endl;
 		cout << "______________________________________" << endl;

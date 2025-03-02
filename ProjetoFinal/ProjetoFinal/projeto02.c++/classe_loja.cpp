@@ -215,14 +215,13 @@ void Loja::addProExiste()
 		{
 			cout << "Produto não encontrado! \n";
 			return;
-		}else{
-			if (idProduto >= 0) {
-				cout << "Produto  a ser excluido é: \n" 
-					<< "ID " << vecProdutos[idProduto].getId() << " | "
-					<< "Nome "<< vecProdutos[idProduto].getNome() << " | "
-					<< "Quantidade " << vecProdutos[idProduto].getQuantidade() << " | "
-					<< "Preço € " << vecProdutos[idProduto].getPreco() << endl;;
-			}
+		}else{			
+			cout << "Produto  a ser excluido é: \n" 
+				<< "ID " << vecProdutos[idProduto].getId() << " | "
+				<< "Nome "<< vecProdutos[idProduto].getNome() << " | "
+				<< "Quantidade " << vecProdutos[idProduto].getQuantidade() << " | "
+				<< "Preço € " << vecProdutos[idProduto].getPreco() << endl;;
+			
 		}
 
 		cout << "Quantidade a mais: ";
@@ -270,7 +269,6 @@ void Loja::criarCliente()
 			// foi dificil isso.
             // Valida o telefone
             if (validarTelefone(telefone)) {
-                cout << "Número de telefone válido." << endl;
                 break;  // Sai do loop se o telefone for válido
             } else {
                 cout << "Número de telefone inválido. O telefone deve ter 9 dígitos numéricos." << endl;
@@ -343,16 +341,16 @@ void Loja::EditarCliente()
 		{
 			cout << "Cliente não encontrado!! ";
 			return;
-		}else{
-			if (idcliente >= 0) {
-				cout << "Cliente a ser editado: \n" 
-					<< "ID " << vecClientes[idcliente].getid() << " | "
-					<< "Nome "<< vecClientes[idcliente].getnome() << " | "
-					<< "telefone " << vecClientes[idcliente].gettelefone() << " | "
-					<< "morada " << vecClientes[idcliente].getmorada() << endl;;
-			}
+		}else{		
+			cout << "Cliente a ser editado: \n" 
+				 << "ID " << vecClientes[idcliente].getid() << " | "
+				 << "Nome "<< vecClientes[idcliente].getnome() << " | "
+				 << "telefone " << vecClientes[idcliente].gettelefone() << " | "
+				 << "morada " << vecClientes[idcliente].getmorada() << endl;;
+		
 		}
 		cout << "Edite o nome do cliente \n";
+		cin.ignore();
 		getline(cin, NovoNome);
 
 		vecClientes[posicao].setnome(NovoNome);
