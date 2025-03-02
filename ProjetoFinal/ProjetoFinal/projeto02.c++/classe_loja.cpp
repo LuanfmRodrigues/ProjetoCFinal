@@ -53,7 +53,8 @@ void Loja::criarProduto() {
 
         // Valida se a quantidade é um números positivos
         cout << "Quantidade: ";
-        while (!(cin >> quantidade) || quantidade <= 0) {
+        while (!(cin >> quantidade) || quantidade <= 0 || cin.peek() != '\n') {
+			//cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
             cout << "Quantidade inválida. Digite um número inteiro positivo: ";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpa a memoria temporaria
