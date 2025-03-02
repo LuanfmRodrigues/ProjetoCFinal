@@ -7,7 +7,7 @@
 #include "cliente.h"
 #include "cliente.cpp"
 
-void menuVendas()
+void menuVendas(Loja& loja)
 {
 	int sel;
 	do
@@ -19,22 +19,26 @@ void menuVendas()
 		cout << "______________________________________" << endl;
 		cout << "          1 - Stock Produtos          " << endl;
 		cout << "          2 - Lista Clientes          " << endl;
-		cout << "              3 - Vendas              " << endl;
-		cout << "              4 - sair                " << endl;
+		cout << "          3 - Criar Clientes          " << endl;
+		cout << "              4 - Vendas              " << endl;
+		cout << "              5 - sair                " << endl;
 		cout << "______________________________________" << endl;
 		cin >> sel;
 		switch (sel)
 		{
 		case 1:
-			
+			loja.impriTodosProd();
 			break;
 		case 2:
-
+			loja.ImprimirTodosClientes();
 			break;		
 		case 3:
-
-			break;		
+			loja.criarCliente();
+			break;				
 		case 4:
+			//venda.efetuarVenda();
+			break;
+		case 5:
 			cout << "Saindo..." << endl;
 			break;
 		default:
@@ -43,7 +47,7 @@ void menuVendas()
 		}
 
 		
-	} while (sel != 4);
+	} while (sel != 5);
 	
 }
 void menuStock(Loja& loja) 
@@ -110,13 +114,13 @@ void menuRelatorio() {
 		switch (sel3)
 		{
 		case 1:
-			//relatorio stock
+			//venda.relatorioStock();
 			break;
 		case 2:
-			//vendas por produto
+			//venda.relatorioProduto();
 			break;
 		case 3:
-			//total vendas
+			//venda.relatoriVendas();
 			break;
 		case 4:
 			cout << "Saindo..." << endl;
@@ -193,13 +197,13 @@ void menuPrincipal(Loja& loja) {
 		switch (sel1)
 		{
 		case 1:
-			//efetuarVenda();   
+			menuVendas(loja);  
 			break;
 		case 2:
 			menuStock(loja);		
 			break;
 		case 3:
-			    
+			menuRelatorio();
 			break;
 		case 4:
 			menuCLiente(loja);
@@ -219,7 +223,7 @@ void menuPrincipal(Loja& loja) {
 
 int main()  
 {
-    setlocale(LC_ALL, "portuguese");
+    setlocale(LC_ALL, "Portuguese_Brazil.1252");
 	Loja loja;
 	menuPrincipal(loja); 
 	
