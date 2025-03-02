@@ -57,7 +57,7 @@ void menuRelatorio() {
 	int sel3;
 	do
 	{
-		system("cls");
+		
 		cout << "______________________________________" << endl;
 		cout << "           MENU RELAT�RIO             " << endl;
 		cout << "______________________________________" << endl;
@@ -95,7 +95,7 @@ void menuCLiente(Loja& loja) {
 	int sel4;
 	do
 	{
-		system("cls");  
+		 
 		cout << "______________________________________" << endl;
 		cout << "             MENU CLIENTE             " << endl;
 		cout << "______________________________________" << endl;
@@ -120,7 +120,7 @@ void menuCLiente(Loja& loja) {
 			loja.EditarCliente();			
 			break;
 		case 4:
-			loja.impriTodosProd();
+			loja.ImprimirTodosClientes();
 			
 			break;
 		case 5:

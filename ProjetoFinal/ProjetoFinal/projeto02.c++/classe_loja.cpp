@@ -76,8 +76,8 @@ void Loja::criarProduto() {
 
         if (cond == 's' || cond == 'S') {
 
-            Produto novoPro(nome, quantidade,preco);
-			armazenarProduto(novoPro);
+            Produto totalProdutos(nome, quantidade,preco);
+			armazenarProduto(totalProdutos);
             cout << "Produto adicionado com sucesso!" << endl;
 
         } else {
@@ -119,6 +119,8 @@ int Loja::procurarProduto(int idProduto)
 
 void Loja::impriTodosProd()
 {
+	system("cls"); 
+	
 	if(totalProdutos == 0){
 		cout << "Nenhum Produto cadastrado. " << endl;
 		return;
@@ -133,6 +135,8 @@ void Loja::impriTodosProd()
 			 << "Quantidade " << vecProdutos[i].getQuantidade() << " | "
 			 << "Preço € " << vecProdutos[i].getPreco() << endl;
 	}
+	system("pause"); 
+
 }
 
 void Loja::RemoverProduto()
@@ -290,8 +294,9 @@ void Loja::criarCliente()
 
 		if (cond == 's' || cond == 'S') {
 			
-			Cliente novoCliente(nome, telefone, morada);
-            ArmazenarCliente(novoCliente);
+			
+			Cliente totalClientes(nome, telefone, morada);
+            ArmazenarCliente(totalClientes);
 			cout << "Cliente criado com sucesso!" << endl;
 		} else {
 			cout << "Cliente não foi criado! \n";
@@ -328,7 +333,7 @@ void Loja::EditarCliente()
 		cout << "             Editar cliente             " << endl;
 		cout << "________________________________________" << endl;
 
-		cout << "ID do Cliente ";
+		cout << "ID do Cliente: ";
         while (!(cin >> idcliente) || idcliente <= 0) {
             cout << "Id inválido. Digite um número positivo: ";
             cin.clear();
@@ -341,12 +346,13 @@ void Loja::EditarCliente()
 		{
 			cout << "Cliente não encontrado!! ";
 			return;
-		}else{		
+		}else{	
+				
 			cout << "Cliente a ser editado: \n" 
-				 << "ID " << vecClientes[idcliente].getid() << " | "
-				 << "Nome "<< vecClientes[idcliente].getnome() << " | "
-				 << "telefone " << vecClientes[idcliente].gettelefone() << " | "
-				 << "morada " << vecClientes[idcliente].getmorada() << endl;;
+				 << "ID " << vecClientes[posicao].getid() << " | "
+				 << "Nome "<< vecClientes[posicao].getnome() << " | "
+				 << "telefone " << vecClientes[posicao].gettelefone() << " | "
+				 << "morada " << vecClientes[posicao].getmorada() << endl;;
 		
 		}
 		cout << "Edite o nome do cliente \n";
@@ -425,6 +431,8 @@ int Loja::ProcurarCliente(int idCliente)
 
 void Loja::ImprimirTodosClientes()
 {
+	system("cls"); 
+	
 	if(totalClientes == 0){
 		cout << "Nenhum Cliente encontrado. " << endl;
 		return;
@@ -439,6 +447,8 @@ void Loja::ImprimirTodosClientes()
 			 << "Telefone " << vecClientes[i].gettelefone() << " | "
 			 << "Morada " << vecClientes[i].getmorada() << endl;
 	}
+	system("pause"); 
+
 }
 
 void Loja::ArmazenarCliente(const Cliente &Cliente)
