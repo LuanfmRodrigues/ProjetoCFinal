@@ -1,8 +1,15 @@
 #pragma once
+#ifndef loja_H
+#define loja_H
 #include<iostream>
 #include<string>
 #include "classe_produto.h"
 #include "cliente.h"
+#include <iomanip>
+#include <limits> 
+#include <climits>
+#include "validacoes.h"
+
 
 using namespace std;
 
@@ -39,3 +46,4 @@ public:
 	void ImprimirTodosClientes();
 	void ArmazenarCliente(const Cliente& Cliente);
 };
+#endif

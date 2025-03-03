@@ -1,12 +1,5 @@
 #include "classe_loja.h"
-#include "cliente.h"
-#include "classe_produto.h"
-#include <string>
-#include <iomanip>
-#include <iostream>
-#include <limits> 
-#include <climits>
-#include "validacoes.cpp"
+
 using namespace std;
 
 
@@ -19,7 +12,7 @@ Loja::Loja() :  totalProdutos(0) ,totalClientes(0)
 	Produto prod4("Moleto S/M", 5, 10.00);
 
 	Cliente clien1("Luan", "961624758", "rua A");
-	Cliente clien2("hiago", "896162568", "rua b");
+	Cliente clien2("Hiago", "896162568", "rua b");
 	Cliente clien3("Felipe", "654324758", "rua c");
 	Cliente clien4("rodrigues", "348524758", "rua d");
 

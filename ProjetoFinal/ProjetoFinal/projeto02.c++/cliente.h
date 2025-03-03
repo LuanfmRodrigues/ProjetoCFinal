@@ -1,4 +1,6 @@
 #pragma once
+#ifndef cliente_H
+#define cliente_H
 #include <iostream>
 #include <string>
 
@@ -28,3 +30,4 @@ public:
 	void setmorada(string morada);
 
 };
+#endif

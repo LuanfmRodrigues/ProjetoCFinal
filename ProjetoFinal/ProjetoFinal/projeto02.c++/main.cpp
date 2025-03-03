@@ -1,14 +1,15 @@
 #include <iostream>
 #include <locale>
-#include "classe_produto.h"
-#include "classe_produto.cpp"
-#include "Classe_loja.cpp"
-#include "classe_loja.h"
-#include "cliente.h"
-#include "cliente.cpp"
+#include "classe_produto.h" 
+#include "classe_loja.h"  
+#include "cliente.h"   
+#include "venda.h"   
 
-void menuVendas(Loja& loja)
+
+
+void menuVendas(Loja& loja, Vendas& vendas)
 {
+	
 	int sel;
 	do
 	{
@@ -36,7 +37,7 @@ void menuVendas(Loja& loja)
 			loja.criarCliente();
 			break;				
 		case 4:
-			//venda.efetuarVenda();
+			vendas.EfetuarVenda(loja);
 			break;
 		case 5:
 			cout << "Saindo..." << endl;
@@ -177,7 +178,7 @@ void menuCLiente(Loja& loja) {
 
 void menuPrincipal(Loja& loja) { 
 
-
+	Vendas vendas;
 	int sel1;
 	do
 	{
@@ -197,7 +198,7 @@ void menuPrincipal(Loja& loja) {
 		switch (sel1)
 		{
 		case 1:
-			menuVendas(loja);  
+			menuVendas(loja, vendas);  
 			break;
 		case 2:
 			menuStock(loja);		

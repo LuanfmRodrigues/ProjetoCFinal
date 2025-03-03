@@ -1,4 +1,6 @@
 #pragma once
+#ifndef produto_H
+#define produto_H
 #include <iostream>
 #include <string>
 
@@ -29,3 +31,4 @@ public:
 	void setPreco(float preco);
 
 };
+#endif
