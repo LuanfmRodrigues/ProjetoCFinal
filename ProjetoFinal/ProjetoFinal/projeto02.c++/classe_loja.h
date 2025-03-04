@@ -1,6 +1,6 @@
 #pragma once
-#ifndef loja_H
-#define loja_H
+#ifndef LOJA_H
+#define LOJA_H
 #include<iostream>
 #include<string>
 #include "classe_produto.h"

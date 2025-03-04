@@ -4,12 +4,16 @@
 #include "classe_loja.h"  
 #include "cliente.h"   
 #include "venda.h"   
-
+#include "classe_produto.cpp"
+#include "classe_loja.cpp"
+#include "cliente.cpp"
+#include "venda.cpp"
+#include "validacoes.cpp"
 
 
 void menuVendas(Loja& loja, Vendas& vendas)
 {
-	
+	system("cls");
 	int sel;
 	do
 	{

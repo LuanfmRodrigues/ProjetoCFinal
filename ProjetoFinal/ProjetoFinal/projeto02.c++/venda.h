@@ -1,12 +1,9 @@
 #pragma once
-#ifndef venda_H
-#define venda_H
+#ifndef VENDA_H
+#define VENDA_H
 #include <iostream>
 #include <string>
-#include "classe_produto.h"
-#include "cliente.h"
 #include "classe_loja.h"
-#include "classe_loja.cpp"
 
 
 

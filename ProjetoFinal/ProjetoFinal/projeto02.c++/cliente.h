@@ -1,6 +1,6 @@
 #pragma once
-#ifndef cliente_H
-#define cliente_H
+#ifndef CLIENTE_H
+#define CLIENTE_H
 #include <iostream>
 #include <string>
 

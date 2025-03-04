@@ -1,6 +1,6 @@
 #include <string>
-#ifndef validacao_H
-#define validacao_H
+#ifndef VALIDACAO_H
+#define VALIDACAO_H
 using namespace std;
 
 // Declaração da função
