@@ -100,7 +100,12 @@ void Loja::armazenarProduto(const Produto& Produto)
   
     
 }
-Produto* Loja::procurarProduto(int id) {
+Produto* Loja::procurarProduto(int id) {	
+	while (!(cin >> id) || id <= 0) {
+		cout << "ID inválida. Digite um número positivo: ";
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
     for (int i = 0; i < totalProdutosGlobal; i++) {
         if (vecProdutosGlobal[i].getId() == id) {
             return &vecProdutosGlobal[i];  // Retorna o endereço do produto encontrado
