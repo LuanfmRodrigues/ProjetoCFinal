@@ -9,6 +9,7 @@
 #include "cliente.cpp"
 #include "venda.cpp"
 #include "validacoes.cpp"
+#include "funcoesGlobal.cpp"
 
 
 void menuVendas(Loja& loja, Vendas& vendas)

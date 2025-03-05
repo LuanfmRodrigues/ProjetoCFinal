@@ -17,12 +17,7 @@ class Loja {
 private:
 	
 	// contador de Produtos eclientes
-	int totalProdutos;
-	int totalClientes;
 
-	//vetores clientes e produtos
-	Produto vecProdutos[100];
-	Cliente vecClientes[100];	
 	
 
 public:
@@ -38,6 +33,8 @@ public:
 	void RemoverProduto();
 	void addProExiste();
 	Produto* procurarProduto(int id);
+	/*Produto& getProduto(int posicao) { return vecProdutos[posicao]; }*/
+
 
 	// Cliente
 	void criarCliente();
@@ -48,4 +45,15 @@ public:
 	void ArmazenarCliente(const Cliente& Cliente);
 	
 };
+extern Produto vecProdutosGlobal[100];
+extern int totalProdutosGlobal;
+extern Cliente vecClientesGlobal[100];
+extern int totalClientesGlobal;
+
+class Loja {
+	public:
+		void impriTodosProd(); // Método para imprimir todos os produtos
+		void ImprimirTodosClientes();
+	};
+
 #endif

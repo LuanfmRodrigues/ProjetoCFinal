@@ -52,27 +52,33 @@ void Vendas::EfetuarVenda(Loja& loja)
         {
             cout << "Produto não encontrado! \n";
             return;
-        }else{                 
+        }else{  
+            cout << "Nome " << vecProdutosGlobal[posicao].getNome() << " | ";
+            cout << "Quantidade " << vecProdutosGlobal[posicao].getQuantidade() << " | ";
+            cout << "Preço € " << vecProdutosGlobal[posicao].getPreco() << endl;
 
-            cout << "Quantidade que deseja \n";
+         }              
+
+        cout << "Quantidade que deseja \n";
+        cin >> quantProdu;
+        while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
+        //cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
+        {
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << "Quantidade invalida." << endl;
+            cout << "Qual a quantidade: ";
             cin >> quantProdu;
-            while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
-            //cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
-            {
-                cin.clear();
-                cin.ignore(INT_MAX, '\n');
-                cout << "Quantidade invalida." << endl;
-                cout << "Qual a quantidade: ";
-                cin >> quantProdu;
-            }  
-            if(quantProdu > posicao->getQuantidade()) {
-                cout << "Nao tem essa quantidade de produto no estoque. \n";
-            }else{
-                posicao->setQuantidade(posicao->getQuantidade() - quantProdu);
-                ArmazenarProVendas(*posicao);
-            }
-            
+        }  
+        if(quantProdu > posicao->getQuantidade()) {
+            cout << "Nao tem essa quantidade de produto no estoque. \n";
+        }else{			
+
         }
+        posicao->setQuantidade(posicao->getQuantidade() - quantProdu);
+        ArmazenarProVendas(*posicao);
+            
+        
 
 
  
