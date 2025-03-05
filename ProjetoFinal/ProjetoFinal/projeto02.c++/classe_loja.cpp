@@ -4,8 +4,10 @@ using namespace std;
 
 
 
-Loja::Loja() :  totalProdutosGlobal(0) ,totalClientesGlobal(0)
+Loja::Loja()   
 {
+	totalProdutosGlobal = 0;
+	totalClientesGlobal = 0;
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
 	Produto prod3("Calça Puma", 13, 25.00);

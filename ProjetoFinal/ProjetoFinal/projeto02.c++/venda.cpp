@@ -53,9 +53,7 @@ void Vendas::EfetuarVenda(Loja& loja)
             cout << "Produto não encontrado! \n";
             return;
         }else{  
-            cout << "Nome " << vecProdutosGlobal[posicao].getNome() << " | ";
-            cout << "Quantidade " << vecProdutosGlobal[posicao].getQuantidade() << " | ";
-            cout << "Preço € " << vecProdutosGlobal[posicao].getPreco() << endl;
+
 
          }              
 
