@@ -34,11 +34,9 @@ void Vendas::EfetuarVenda(Loja& loja)
     cout << "________________________________________" << endl;
     cout << "                                        " << endl;
     //Imprimiri todos os produtos da Loja
-    loja.impriTodosProd();
+    loja.impriTodosProd();   
     
-    
-    do
-    {
+    do{
            
         cout << "Id do produto que deseja: \n";
             while (!(cin >> idproduto) || idproduto <= 0) {
@@ -53,10 +51,12 @@ void Vendas::EfetuarVenda(Loja& loja)
             cout << "Produto não encontrado! \n";
             return;
         }else{  
-
-
-         }              
-
+            cout << "Produto: \n "
+                 << "ID " << posicao->getId() << " | "
+                 << "Nome "<< posicao->getNome() << " | "
+                 << "Quantidade " << posicao->getQuantidade() << " | "
+                 << "Preço € " << posicao->getPreco() << endl;
+        }  
         cout << "Quantidade que deseja \n";
         cin >> quantProdu;
         while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
@@ -71,15 +71,11 @@ void Vendas::EfetuarVenda(Loja& loja)
         if(quantProdu > posicao->getQuantidade()) {
             cout << "Nao tem essa quantidade de produto no estoque. \n";
         }else{			
-
+            posicao->setQuantidade(posicao->getQuantidade() - quantProdu);
+            ArmazenarProVendas(*posicao);
         }
-        posicao->setQuantidade(posicao->getQuantidade() - quantProdu);
-        ArmazenarProVendas(*posicao);
-            
+        cout << "Produto adiciinado ao carrinhho!  \n";         
         
-
-
- 
     cout << "Deseja adicionar mais produtos? (s|n) \n";
     cin >> valid;
     cin.ignore();

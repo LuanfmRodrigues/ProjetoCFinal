@@ -6,7 +6,6 @@ using namespace std;
 
 Loja::Loja()   
 {
-
 	Produto vecProdutosGlobal[100]; // Define o array global de produtos   
 	Cliente vecClientesGlobal[100]; // Define o array global de clientes
 	    
@@ -74,8 +73,8 @@ void Loja::criarProduto() {
 
         if (cond == 's' || cond == 'S') {
 
-            Produto totalProdutos(nome, quantidade,preco);
-			armazenarProduto(totalProdutos);
+            Produto totalProdutosGlobal(nome, quantidade,preco);
+			armazenarProduto(totalProdutosGlobal);
             cout << "Produto adicionado com sucesso!" << endl;
 
         } else {
@@ -252,7 +251,8 @@ void Loja::addProExiste()
 		cout << "Deseja adicionar quantidade a mais? (s|n) \n";
 		cin >> valid3;
 	} while (valid3 == 's' || valid3 == 'S');
-	return ;	
+	return ;
+	
 
 	
 }
