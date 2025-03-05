@@ -97,8 +97,17 @@ void Loja::armazenarProduto(const Produto& Produto)
   
     
 }
+Produto* Loja::procurarProduto(int id) {
+    for (auto& produto : vecProdutos) {
+        if (produto.getId() == id) {
+            return &produto;  // Retorna um ponteiro para o objeto Produto
+        }
+    }
+    return nullptr;  // Retorna nullptr se o produto não for encontrado
+}
 
-int Loja::procurarProduto(int idProduto)
+
+int Loja::procurarProdutoid(int idProduto)
 {
 	for (int i = 0; i < totalProdutos; i++)
 	{
@@ -152,7 +161,7 @@ void Loja::RemoverProduto()
             cin.ignore(INT_MAX, '\n');
         }
 
-        int remProd = procurarProduto(idProduto);
+        int remProd = procurarProdutoid(idProduto);
         if (remProd >= 0) {
 			cout << "Produto  a ser excluido é: \n" 
 				<< "ID " << vecProdutos[remProd].getId() << " | "
@@ -207,7 +216,7 @@ void Loja::addProExiste()
 			
         }
 
-		posicao = procurarProduto(idProduto);
+		posicao = procurarProdutoid(idProduto);
 
 		if (posicao == -1)
 		{
@@ -245,6 +254,15 @@ void Loja::addProExiste()
 
 	
 }
+
+/*int Loja::procurarProduto(int posicao) 
+{
+    if (posicao >= 0 && posicao < totalProdutos) {
+        return &vecProdutos[posicao]; // Retorna o produto se a posição for válida
+    }
+    // Retorna um produto inválido 
+    return nullptr; // Produto inválido
+}*/
 // Clientes
 void Loja::criarCliente()
 {

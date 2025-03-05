@@ -33,10 +33,11 @@ public:
 	//produtos	
 	void criarProduto();
 	void armazenarProduto(const Produto& Produto);
-	int procurarProduto(int idProduto);
+	int procurarProdutoid(int idProduto);
 	void impriTodosProd();
 	void RemoverProduto();
 	void addProExiste();
+	Produto* procurarProduto(int id);
 
 	// Cliente
 	void criarCliente();
@@ -45,5 +46,6 @@ public:
 	int ProcurarCliente(int idCliente);
 	void ImprimirTodosClientes();
 	void ArmazenarCliente(const Cliente& Cliente);
+	
 };
 #endif

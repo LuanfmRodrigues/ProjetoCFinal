@@ -7,13 +7,27 @@
 
 using namespace std;
 
-Vendas::Vendas() : TotalVenda(0)
+Vendas::Vendas() : TotalVendas(0)
 {
 
+}
+void Vendas::ArmazenarProVendas(const Produto& Produto)
+{
+	if(TotalVendas >= 100) {
+		cout << "Estoque esta Cheio!! \n";
+		return;
+	}	
+	vecVendas[TotalVendas] = Produto;
+	TotalVendas++;
+	return;
+  
+    
 }
 
 void Vendas::EfetuarVenda(Loja& loja)
 {
+    int idproduto, quantProdu;
+    char valid;
     system ("cls");
     cout << "________________________________________" << endl;
     cout << "            Vendas de Produto           " << endl;
@@ -21,6 +35,52 @@ void Vendas::EfetuarVenda(Loja& loja)
     cout << "                                        " << endl;
     //Imprimiri todos os produtos da Loja
     loja.impriTodosProd();
+    
+    
+    do
+    {
+           
+        cout << "Id do produto que deseja: \n";
+            while (!(cin >> idproduto) || idproduto <= 0) {
+                cout << "Id inválido. Digite um número positivo: ";
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+        
+        }
+        Produto* posicao = loja.procurarProduto(idproduto);
+        if (posicao == nullptr)
+        {
+            cout << "Produto não encontrado! \n";
+            return;
+        }else{                 
+
+            cout << "Quantidade que deseja \n";
+            cin >> quantProdu;
+            while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
+            //cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
+            {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << "Quantidade invalida." << endl;
+                cout << "Qual a quantidade: ";
+                cin >> quantProdu;
+            }  
+            if(quantProdu > posicao->getQuantidade()) {
+                cout << "Nao tem essa quantidade de produto no estoque. \n";
+            }else{
+                posicao->setQuantidade(posicao->getQuantidade() - quantProdu);
+                ArmazenarProVendas(*posicao);
+            }
+            
+        }
+
+
+ 
+    cout << "Deseja adicionar mais produtos? (s|n) \n";
+    cin >> valid;
+    cin.ignore();
+
+    } while (valid == 's' || valid =='S');
 
 }
 

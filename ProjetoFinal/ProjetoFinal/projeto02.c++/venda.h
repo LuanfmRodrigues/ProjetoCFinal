@@ -16,6 +16,7 @@ private:
     // contador de Vendas
     int TotalVendas;
     int idVendas;
+   Produto vecVendas[100];
     double TotalVenda;
 
     
@@ -27,5 +28,6 @@ public:
     void EfetuarVenda(Loja& loja);
     int NumVencedor();
     int Numfatura();
+    void ArmazenarProVendas(const Produto& Produto);
 }; 
 #endif
