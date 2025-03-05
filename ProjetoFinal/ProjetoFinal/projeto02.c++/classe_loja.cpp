@@ -6,8 +6,10 @@ using namespace std;
 
 Loja::Loja()   
 {
-	totalProdutosGlobal = 0;
-	totalClientesGlobal = 0;
+
+	Produto vecProdutosGlobal[100]; // Define o array global de produtos   
+	Cliente vecClientesGlobal[100]; // Define o array global de clientes
+	    
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
 	Produto prod3("Calça Puma", 13, 25.00);
@@ -100,13 +102,14 @@ void Loja::armazenarProduto(const Produto& Produto)
     
 }
 Produto* Loja::procurarProduto(int id) {
-    for (auto& produto : vecProdutosGlobal) {
-        if (produto.getId() == id) {
-            return &produto;  // Retorna um ponteiro para o objeto Produto
+    for (int i = 0; i < totalProdutosGlobal; i++) {
+        if (vecProdutosGlobal[i].getId() == id) {
+            return &vecProdutosGlobal[i];  // Retorna o endereço do produto encontrado
         }
     }
-    return nullptr;  // Retorna nullptr se o produto não for encontrado
+    return nullptr;  // Retorna nullptr se não encontrar o produto
 }
+
 
 
 int Loja::procurarProdutoid(int idProduto)
@@ -160,7 +163,7 @@ void Loja::RemoverProduto()
         while (!(cin >> idProduto) || idProduto <= 0) {
             cout << "ID inválida. Digite um número positivo: ";
             cin.clear();
-            cin.ignore(INT_MAX, '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
 
         int remProd = procurarProdutoid(idProduto);
@@ -249,22 +252,11 @@ void Loja::addProExiste()
 		cout << "Deseja adicionar quantidade a mais? (s|n) \n";
 		cin >> valid3;
 	} while (valid3 == 's' || valid3 == 'S');
-	return ;
-
-
-	
+	return ;	
 
 	
 }
 
-/*int Loja::procurarProduto(int posicao) 
-{
-    if (posicao >= 0 && posicao < totalProdutos) {
-        return &vecProdutos[posicao]; // Retorna o produto se a posição for válida
-    }
-    // Retorna um produto inválido 
-    return nullptr; // Produto inválido
-}*/
 // Clientes
 void Loja::criarCliente()
 {

@@ -16,10 +16,8 @@ using namespace std;
 class Loja {
 private:
 	
-	// contador de Produtos eclientes
-	 // Método para imprimir todos os produtos
-	
-	
+int totalProdutosGlobal = 0; // Inicializa a variável global de produtos
+int totalClientesGlobal = 0; // Inicializa a variável global de clientes
 
 public:
 
@@ -34,7 +32,7 @@ public:
 	void addProExiste();
 	void impriTodosProd();
 	Produto* procurarProduto(int id);
-	/*Produto& getProduto(int posicao) { return vecProdutos[posicao]; }*/
+	
 
 
 	// Cliente
