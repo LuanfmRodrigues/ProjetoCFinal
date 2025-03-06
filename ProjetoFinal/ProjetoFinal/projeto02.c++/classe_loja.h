@@ -57,6 +57,7 @@ public:
     int Numfatura();
     void ArmazenarProVendas(const Venda &venda);
     void checkout();
+	void ImprimirVendas();
 };
 #endif
 

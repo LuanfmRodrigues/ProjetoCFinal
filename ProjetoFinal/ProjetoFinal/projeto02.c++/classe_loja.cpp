@@ -510,20 +510,79 @@ void Loja::checkout()
  
 }
 
+void Loja::ImprimirVendas()
+{
+	system("cls"); 
+	int totalValor;
+	if(TotalVendas == 0){
+		cout << "Nenhum Venda cadastrada. " << endl;
+		return;
+	}
+	for(int i = 0; i < TotalVendas;i++){
+		cout << "ID " << vecVendas[i].getid() << " | "
+			 << "Nome "<< vecVendas[i].getnome() << " | "
+			 << "Quantidade " << vecVendas[i].getquantidade() << " | "
+			 << "Preço € " << vecVendas[i].getpreco() << "\n"
+			 << "Subtotal: " << vecVendas[i].getpreco() * vecVendas[i].getquantidade()<< endl;
+
+		totalValor += vecVendas[i].getpreco() * vecVendas[i].getquantidade();
+			 
+	}
+	
+	system("pause"); 
+}
+
 void Loja::EfetuarVenda()
 {
-    int idproduto, quantProdu;
-    char valid;
+    int idproduto, quantProdu, idcliente, IDCli;
+    char valid, valid1;
     system ("cls");
     cout << "________________________________________" << endl;
     cout << "            Vendas de Produto           " << endl;
     cout << "________________________________________" << endl;
     cout << "                                        " << endl;
-    //Imprimiri todos os produtos da Loja
-    impriTodosProd();   
-    
+         
+    cout << "Possue Ficha (s) ou fazer ficha. (f) " << endl;
+	cin >> valid1;
+	if(valid1 == 's'){
+		ImprimirTodosClientes();
+		cout << "Qual ID: \n";
+		while (!(cin >> idcliente) || idcliente <= 0) {
+			cout << "Id inválido. Digite um número positivo: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+	
+		}
+		int posicaoCli = ProcurarCliente(idcliente);
+		if(posicaoCli == -1){
+			cout << "Cliente não encontrado !! ";
+			return;
+		}else{
+			IDCli = ProcurarCliente(posicaoCli);
+		}
+	}else{
+		criarCliente();
+		ImprimirTodosClientes();
+		cout << "Qual ID: \n";
+		while (!(cin >> idcliente) || idcliente <= 0) {
+			cout << "Id inválido. Digite um número positivo: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');
+	
+		}
+		int posicaoCli = ProcurarCliente(idcliente);
+		if(posicaoCli == -1){
+			cout << "Cliente não encontrado !! ";
+			return;
+		}else{
+			IDCli = ProcurarCliente(posicaoCli);
+		}
+
+	}
+	 //Imprimiri todos os produtos da Loja
+	impriTodosProd();  
     do{
-           
+        
         cout << "Id do produto que deseja: \n";
             while (!(cin >> idproduto) || idproduto <= 0) {
                 cout << "Id inválido. Digite um número positivo: ";
@@ -558,8 +617,8 @@ void Loja::EfetuarVenda()
             cout << "Nao tem essa quantidade de produto no estoque. \n";
         }else{			
             vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() - quantProdu);
-            vecProdutosGlobal[posicao].setPreco(vecProdutosGlobal[posicao].getPreco()* quantProdu);
-            Venda venda(vecProdutosGlobal[posicao].getNome(), quantProdu, vecProdutosGlobal[posicao].getPreco());
+            
+            Venda venda(vecProdutosGlobal[posicao].getNome(),vecClientesGlobal[IDCli].getid(), quantProdu, vecProdutosGlobal[posicao].getPreco());
 			ArmazenarProVendas(venda);
         }
         cout << "Produto adicionado ao carrinhho!  \n";         
@@ -570,6 +629,12 @@ void Loja::EfetuarVenda()
 
     } while (valid == 's' || valid =='S');
 
+}
+
+void Loja::imprimirTalao()
+{
+	int troco, lucro;
+	cout << "Produtos no Carrinho: \n";
 }
 
 int Loja::NumVencedor()
