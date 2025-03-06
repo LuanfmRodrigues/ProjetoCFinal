@@ -536,12 +536,12 @@ void Loja::EfetuarVenda()
 			cout << "Produto não encontrado! \n";
             return;
 		}else{     
-			cout << "Produto: \n ";
-			cout << "ID " << vecProdutosGlobal[posicao].getId() << endl;
-			cout << "Nome "<< vecProdutosGlobal[posicao].getNome() << endl;
-			cout << "Quantidade " << vecProdutosGlobal[posicao].getQuantidade() << endl;
-			cout << "Preço por unidade € " << vecProdutosGlobal[posicao].getPreco() << endl; 
-			cout << "Subtotal: " << vecProdutosGlobal[posicao].getPreco() * vecProdutosGlobal[posicao].getQuantidade()<< endl;
+			cout << "Produto: \n "<< endl
+				 << "ID " << vecProdutosGlobal[posicao].getId() << " |"
+				 << "Nome "<< vecProdutosGlobal[posicao].getNome() <<" |"
+				 << "Quantidade " << vecProdutosGlobal[posicao].getQuantidade()  <<" |"
+				 << "Preço por unidade € " << vecProdutosGlobal[posicao].getPreco() << " |" 
+				 << "Subtotal: " << vecProdutosGlobal[posicao].getPreco() * vecProdutosGlobal[posicao].getQuantidade()<< endl;
 		}  
         cout << "Quantidade que deseja \n";
         cin >> quantProdu;
