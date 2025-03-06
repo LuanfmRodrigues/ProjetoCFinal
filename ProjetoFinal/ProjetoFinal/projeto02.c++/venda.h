@@ -1,33 +1,34 @@
 #pragma once
-#ifndef VENDA_H
-#define VENDA_H
+#ifndef CLASSE_VENDA_H
+#define CLASSE_VENDA_H
+
 #include <iostream>
 #include <string>
-#include "classe_loja.h"
-
-
-
-
 using namespace std;
 
-class Vendas : public Loja{    
+class Venda
+{    
 
 private:
-    // contador de Vendas
-    int TotalVendas;
-    int idVendas;
-   Produto vecVendas[100];
-    double TotalVenda;
-
-    
+    static int contVenda;  
+    int idvendas;
+    string nome;
+    int data;
+    int ValorPagar;    
 
 
 public:
-    Vendas();
-    void TodosProdutos(Produto& todos);    
-    void EfetuarVenda(Loja& loja);
-    int NumVencedor();
-    int Numfatura();
-    void ArmazenarProVendas(const Produto& Produto);
+    Venda();
+    Venda (int idvenda, string nome,int data, int ValorPagar);
+
+    int getid()const;
+    string getnome() const;	
+	int getdata()const;
+	int getvalorpagar()const;
+
+	void setid(int id);
+    void setnome(string nome);	
+	void setdata(int data);
+	void setvalorpagar(int valorpagar);
 }; 
 #endif

@@ -1,10 +1,14 @@
 #pragma once
-#ifndef LOJA_H
-#define LOJA_H
+#ifndef CLASSE_LOJA_H
+#define CLASSE_LOJA_H
 #include<iostream>
+#include <set>
+#include <random>
+#include <chrono>
 #include<string>
 #include "classe_produto.h"
 #include "cliente.h"
+#include "venda.h"
 #include <iomanip>
 #include <limits> 
 #include <climits>
@@ -15,9 +19,13 @@ using namespace std;
 
 class Loja {
 private:
+Produto vecProdutosGlobal[100];
+Cliente vecClientesGlobal[100];
+Venda vecVendas[100];
 	
 int totalProdutosGlobal = 0; // Inicializa a variável global de produtos
 int totalClientesGlobal = 0; // Inicializa a variável global de clientes
+int TotalVendas = 0;
 
 public:
 
@@ -42,11 +50,14 @@ public:
 	int ProcurarCliente(int idCliente);
 	void ArmazenarCliente(const Cliente& Cliente);
 	void ImprimirTodosClientes();
-	
-};
-extern Produto vecProdutosGlobal[100];
-extern int totalProdutosGlobal;
-extern Cliente vecClientesGlobal[100];
-extern int totalClientesGlobal;
 
+	//Venda
+	void TodosProdutos(Produto& todos);    
+    void EfetuarVenda();
+    int NumVencedor();
+    int Numfatura();
+    void ArmazenarProVendas(const Venda &venda);
+    void checkout();
+};
 #endif
+

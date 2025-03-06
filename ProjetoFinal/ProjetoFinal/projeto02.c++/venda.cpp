@@ -1,112 +1,58 @@
 #include "venda.h"
-#include <set>
-#include <random>
-#include <chrono>
-#include "classe_loja.h"
-#include "classe_produto.h"
 
-using namespace std;
-
-Vendas::Vendas() : TotalVendas(0)
+int Venda::contVenda = 1;
+Venda::Venda()
 {
-
-}
-void Vendas::ArmazenarProVendas(const Produto& Produto)
-{
-	if(TotalVendas >= 100) {
-		cout << "Estoque esta Cheio!! \n";
-		return;
-	}	
-	vecVendas[TotalVendas] = Produto;
-	TotalVendas++;
-	return;
-  
-    
+    idvendas = 0;
+	nome = "Cliente";
+	data = 00;
+	ValorPagar = 0;
 }
 
-void Vendas::EfetuarVenda(Loja& loja)
+Venda::Venda(int idvenda, string nome, int data, int ValorPagar)
 {
-    int idproduto, quantProdu;
-    char valid;
-    system ("cls");
-    cout << "________________________________________" << endl;
-    cout << "            Vendas de Produto           " << endl;
-    cout << "________________________________________" << endl;
-    cout << "                                        " << endl;
-    //Imprimiri todos os produtos da Loja
-    loja.impriTodosProd();   
-    
-    do{
-           
-        cout << "Id do produto que deseja: \n";
-            while (!(cin >> idproduto) || idproduto <= 0) {
-                cout << "Id inválido. Digite um número positivo: ";
-                cin.clear();
-                cin.ignore(INT_MAX, '\n');
-        
-        }
-        Produto* posicao = loja.procurarProduto(idproduto);
-        if (posicao == nullptr)
-        {
-            cout << "Produto não encontrado! \n";
-            return;
-        }else{  
-            cout << "Produto: \n "
-                 << "ID " << posicao->getId() << " | "
-                 << "Nome "<< posicao->getNome() << " | "
-                 << "Quantidade " << posicao->getQuantidade() << " | "
-                 << "Preço € " << posicao->getPreco() << endl;
-        }  
-        cout << "Quantidade que deseja \n";
-        cin >> quantProdu;
-        while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
-        //cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
-        {
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-            cout << "Quantidade invalida." << endl;
-            cout << "Qual a quantidade: ";
-            cin >> quantProdu;
-        }  
-        if(quantProdu > posicao->getQuantidade()) {
-            cout << "Nao tem essa quantidade de produto no estoque. \n";
-        }else{			
-            posicao->setQuantidade(posicao->getQuantidade() - quantProdu);
-            ArmazenarProVendas(*posicao);
-        }
-        cout << "Produto adiciinado ao carrinhho!  \n";         
-        
-    cout << "Deseja adicionar mais produtos? (s|n) \n";
-    cin >> valid;
-    cin.ignore();
-
-    } while (valid == 's' || valid =='S');
-
+    idvenda = contVenda++;
+    this->nome = nome;
+    this->data = data;
+    this->ValorPagar = ValorPagar;
 }
 
-int Vendas::NumVencedor()
+int Venda::getid() const
 {
-    //para gerar numero vencedor e do cliente
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<int> distrib(1000, 9999);
-    long long numero;
-    do {
-        numero = distrib(gen);
-    } while (numero <= 0);
-    return (numero < 0) ? -numero : numero;
+    return 0;
 }
 
-int Vendas::Numfatura()
+string Venda::getnome() const
 {
-    //gera numero da fatura
-    random_device rd;
-    mt19937 ger(rd());
-    uniform_int_distribution<int> distrib(1000, 9999);
-    long long numero;
-    do {
-        numero = distrib(ger);
-    } while (numero <= 0);
-    //operador ternario usado para no caso de ser negativo retornar sempre positivo
-    return (numero < 0) ? -numero : numero;
+    return string();
+}
+
+int Venda::getdata() const
+{
+    return 0;
+}
+
+int Venda::getvalorpagar() const
+{
+    return 0;
+}
+
+void Venda::setid(int idvendas)
+{
+    this->idvendas = idvendas;
+}
+
+void Venda::setnome(string nome)
+{
+    this->nome = nome;
+}
+
+void Venda::setdata(int data)
+{
+    this->data = data;
+}
+
+void Venda::setvalorpagar(int valorpagar)
+{
+    this->ValorPagar = valorpagar;
 }

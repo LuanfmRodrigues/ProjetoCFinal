@@ -2,17 +2,17 @@
 #include <locale>
 #include "classe_produto.h" 
 #include "classe_loja.h"  
-#include "cliente.h"   
-#include "venda.h"   
+#include "cliente.h"  
+#include "venda.h"
 #include "classe_produto.cpp"
 #include "classe_loja.cpp"
 #include "cliente.cpp"
 #include "venda.cpp"
 #include "validacoes.cpp"
-#include "funcoesGlobal.cpp"
 
 
-void menuVendas(Loja& loja, Vendas& vendas)
+
+void menuVendas(Loja& loja)
 {
 	system("cls");
 	int sel;
@@ -42,7 +42,7 @@ void menuVendas(Loja& loja, Vendas& vendas)
 			loja.criarCliente();
 			break;				
 		case 4:
-			vendas.EfetuarVenda(loja);
+			loja.EfetuarVenda();
 			break;
 		case 5:
 			cout << "Saindo..." << endl;
@@ -183,7 +183,6 @@ void menuCLiente(Loja& loja) {
 
 void menuPrincipal(Loja& loja) { 
 
-	Vendas vendas;
 	int sel1;
 	do
 	{
@@ -203,7 +202,7 @@ void menuPrincipal(Loja& loja) {
 		switch (sel1)
 		{
 		case 1:
-			menuVendas(loja, vendas);  
+			menuVendas(loja);  
 			break;
 		case 2:
 			menuStock(loja);		

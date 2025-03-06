@@ -1,6 +1,6 @@
 #pragma once
-#ifndef PRODUTO_H
-#define PRODUTO_H
+#ifndef CLASSE_PRODUTO_H
+#define CLASSE_PRODUTO_H
 #include <iostream>
 #include <string>
 

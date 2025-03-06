@@ -6,8 +6,8 @@ using namespace std;
 
 Loja::Loja()   
 {
-	Produto vecProdutosGlobal[100]; // Define o array global de produtos   
-	Cliente vecClientesGlobal[100]; // Define o array global de clientes
+	//Produto vecProdutosGlobal[100]; // Define o array global de produtos   
+	//Cliente vecClientesGlobal[100]; // Define o array global de clientes
 	    
 	Produto prod1("Camisa Nike", 10, 15.00);
 	Produto prod2("Tenis Adidas", 20, 45.00);
@@ -101,11 +101,11 @@ void Loja::armazenarProduto(const Produto& Produto)
     
 }
 Produto* Loja::procurarProduto(int id) {	
-	while (!(cin >> id) || id <= 0) {
+	/*while (!(cin >> id) || id <= 0) {
 		cout << "ID inválida. Digite um número positivo: ";
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	}
+	}*/
     for (int i = 0; i < totalProdutosGlobal; i++) {
         if (vecProdutosGlobal[i].getId() == id) {
             return &vecProdutosGlobal[i];  // Retorna o endereço do produto encontrado
@@ -473,3 +473,138 @@ void Loja::ArmazenarCliente(const Cliente &Cliente)
 	totalClientesGlobal++;
 	return;
 }
+// Vendas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+void Loja::ArmazenarProVendas(const Venda& venda)
+{
+	if(TotalVendas >= 100) {
+		cout << "Estoque esta Cheio!! \n";
+		return;
+	}	
+	vecVendas[TotalVendas] = Venda;
+	TotalVendas++;
+	return;
+  
+    
+}
+
+void Loja::checkout()
+{  
+  /*double valorTotal = 0;
+  char valid;
+  if (TotalVendas == 0){
+    cout << "Carrinho esta vazio!! \n";
+    return;
+  }
+  cout << "________________________________________" << endl;
+  cout << "                 Checkout               " << endl;
+  cout << "________________________________________" << endl;
+  cout << "                                        " << endl;
+
+  for (int i = 0; i < TotalVendas; i++)
+  {
+    vecVendas[i].getPreco();
+    valorTotal++;
+  }
+  
+  for (int i = 0; i < TotalVendas; i++)
+  {
+    cout << "Os Produtos: \n ";
+    cout << "Nome "<< vecVendas[i].getNome() << endl;
+    cout << "Quantidade " << vecVendas[i].getQuantidade() << endl;
+    cout << "Preço € " << vecVendas[i].getPreco() << endl; 
+        
+  }
+  cout << "O valor Total dos Produtos: " << valorTotal << endl;    */
+ 
+}
+
+void Loja::EfetuarVenda()
+{
+    int idproduto, quantProdu;
+    char valid;
+    system ("cls");
+    cout << "________________________________________" << endl;
+    cout << "            Vendas de Produto           " << endl;
+    cout << "________________________________________" << endl;
+    cout << "                                        " << endl;
+    //Imprimiri todos os produtos da Loja
+    impriTodosProd();   
+    
+    do{
+           
+        cout << "Id do produto que deseja: \n";
+            while (!(cin >> idproduto) || idproduto <= 0) {
+                cout << "Id inválido. Digite um número positivo: ";
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+        
+        }
+        int posicao = procurarProdutoid(idproduto);
+        if (posicao == -1){  
+			cout << "Produto não encontrado! \n";
+            return;
+		}else{     
+			cout << "Produto: \n ";
+			cout << "ID " << vecProdutosGlobal[posicao].getId() << endl;
+			cout << "Nome "<< vecProdutosGlobal[posicao].getNome() << endl;
+			cout << "Quantidade " << vecProdutosGlobal[posicao].getQuantidade() << endl;
+			cout << "Preço por unidade € " << vecProdutosGlobal[posicao].getPreco() << endl; 
+			cout << "Subtotal: " << vecProdutosGlobal[posicao].getPreco() * vecProdutosGlobal[posicao].getQuantidade()<< endl;
+		}  
+        cout << "Quantidade que deseja \n";
+        cin >> quantProdu;
+        while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
+        //cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
+        {
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << "Quantidade invalida." << endl;
+            cout << "Qual a quantidade: ";
+            cin >> quantProdu;
+        }  
+        if(quantProdu > vecProdutosGlobal[posicao].getQuantidade()) {
+            cout << "Nao tem essa quantidade de produto no estoque. \n";
+        }else{			
+            vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() - quantProdu);
+            vecProdutosGlobal[posicao].setPreco(vecProdutosGlobal[posicao].getPreco()* quantProdu);
+            ArmazenarProVendas(posicao);
+        }
+        cout << "Produto adicionado ao carrinhho!  \n";         
+        
+    cout << "Deseja adicionar mais produtos? (s|n) \n";
+    cin >> valid;
+    cin.ignore();
+
+    } while (valid == 's' || valid =='S');
+
+}
+
+int Loja::NumVencedor()
+{
+    //para gerar numero vencedor e do cliente
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> distrib(1000, 9999);
+    long long numero;
+    do {
+        numero = distrib(gen);
+    } while (numero <= 0);
+    return (numero < 0) ? -numero : numero;
+}
+
+int Loja::Numfatura()
+{
+    //gera numero da fatura
+    random_device rd;
+    mt19937 ger(rd());
+    uniform_int_distribution<int> distrib(1000, 9999);
+    long long numero;
+    do {
+        numero = distrib(ger);
+    } while (numero <= 0);
+    //operador ternario usado para no caso de ser negativo retornar sempre positivo
+    return (numero < 0) ? -numero : numero;
+}
+
