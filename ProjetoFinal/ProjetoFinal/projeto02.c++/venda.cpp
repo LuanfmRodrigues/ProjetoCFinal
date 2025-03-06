@@ -3,18 +3,19 @@
 int Venda::contVenda = 1;
 Venda::Venda()
 {
-    idvendas = 0;
-	nome = "Cliente";
-	data = 00;
-	ValorPagar = 0;
+    idvenda = 0;
+	nome = "Produto";
+	quantidade = 0;
+    preco = 0.0;
+
 }
 
-Venda::Venda(int idvenda, string nome, int data, int ValorPagar)
+Venda::Venda(const string& nome,int quantidade, double preco)
 {
     idvenda = contVenda++;
     this->nome = nome;
-    this->data = data;
-    this->ValorPagar = ValorPagar;
+    this->quantidade = quantidade;
+    this->preco = preco;
 }
 
 int Venda::getid() const
@@ -27,19 +28,20 @@ string Venda::getnome() const
     return string();
 }
 
-int Venda::getdata() const
+
+int Venda::getquantidade() const
 {
     return 0;
 }
 
-int Venda::getvalorpagar() const
+double Venda::getpreco() const
 {
-    return 0;
+    return 0.0;
 }
 
-void Venda::setid(int idvendas)
+void Venda::setid(int idvenda)
 {
-    this->idvendas = idvendas;
+    this->idvenda = idvenda;
 }
 
 void Venda::setnome(string nome)
@@ -47,12 +49,12 @@ void Venda::setnome(string nome)
     this->nome = nome;
 }
 
-void Venda::setdata(int data)
-{
-    this->data = data;
+void Venda::setquantidade(int quantidade)
+{  
+    this->quantidade = quantidade;
 }
 
-void Venda::setvalorpagar(int valorpagar)
+void Venda::setpreco(double preco)
 {
-    this->ValorPagar = valorpagar;
+    this->preco = preco;
 }

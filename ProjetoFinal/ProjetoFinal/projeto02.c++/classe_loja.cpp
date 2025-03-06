@@ -13,22 +13,26 @@ Loja::Loja()
 	Produto prod2("Tenis Adidas", 20, 45.00);
 	Produto prod3("Calça Puma", 13, 25.00);
 	Produto prod4("Moleto S/M", 5, 10.00);
+	Produto prod5("Camisa Levis", 6, 7.00);
 
 	Cliente clien1("Luan", "961624758", "rua A");
 	Cliente clien2("Hiago", "896162568", "rua b");
 	Cliente clien3("Felipe", "654324758", "rua c");
 	Cliente clien4("rodrigues", "348524758", "rua d");
+	Cliente clien5("Diego","987654367", "rua luz");
 
 	armazenarProduto(prod1);
 	armazenarProduto(prod2);
 	armazenarProduto(prod3);
 	armazenarProduto(prod4);
+	armazenarProduto(prod5);
 
 
 	ArmazenarCliente(clien1);
 	ArmazenarCliente(clien2);
 	ArmazenarCliente(clien3);
 	ArmazenarCliente(clien4);
+	ArmazenarCliente(clien5);
 }
 
 void Loja::criarProduto() {
@@ -100,20 +104,6 @@ void Loja::armazenarProduto(const Produto& Produto)
   
     
 }
-Produto* Loja::procurarProduto(int id) {	
-	/*while (!(cin >> id) || id <= 0) {
-		cout << "ID inválida. Digite um número positivo: ";
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	}*/
-    for (int i = 0; i < totalProdutosGlobal; i++) {
-        if (vecProdutosGlobal[i].getId() == id) {
-            return &vecProdutosGlobal[i];  // Retorna o endereço do produto encontrado
-        }
-    }
-    return nullptr;  // Retorna nullptr se não encontrar o produto
-}
-
 
 
 int Loja::procurarProdutoid(int idProduto)
@@ -482,7 +472,7 @@ void Loja::ArmazenarProVendas(const Venda& venda)
 		cout << "Estoque esta Cheio!! \n";
 		return;
 	}	
-	vecVendas[TotalVendas] = Venda;
+	vecVendas[TotalVendas] = venda;
 	TotalVendas++;
 	return;
   
@@ -569,7 +559,8 @@ void Loja::EfetuarVenda()
         }else{			
             vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() - quantProdu);
             vecProdutosGlobal[posicao].setPreco(vecProdutosGlobal[posicao].getPreco()* quantProdu);
-            ArmazenarProVendas(posicao);
+            Venda venda(vecProdutosGlobal[posicao].getNome(), quantProdu, vecProdutosGlobal[posicao].getPreco());
+			ArmazenarProVendas(venda);
         }
         cout << "Produto adicionado ao carrinhho!  \n";         
         

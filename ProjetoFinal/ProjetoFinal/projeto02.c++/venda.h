@@ -11,24 +11,24 @@ class Venda
 
 private:
     static int contVenda;  
-    int idvendas;
+    int idvenda;
     string nome;
-    int data;
-    int ValorPagar;    
+    int quantidade;
+    double preco;    
 
 
 public:
     Venda();
-    Venda (int idvenda, string nome,int data, int ValorPagar);
+    Venda (const string& nome,int quantidade, double preco);
 
     int getid()const;
     string getnome() const;	
-	int getdata()const;
-	int getvalorpagar()const;
+	int getquantidade()const;
+    double getpreco()const;
 
-	void setid(int id);
+	void setid(int idvenda);
     void setnome(string nome);	
-	void setdata(int data);
-	void setvalorpagar(int valorpagar);
+	void setquantidade(int quantidade);
+    void setpreco(double preco);
 }; 
 #endif

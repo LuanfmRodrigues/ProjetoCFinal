@@ -39,9 +39,7 @@ public:
 	void RemoverProduto();
 	void addProExiste();
 	void impriTodosProd();
-	Produto* procurarProduto(int id);
 	
-
 
 	// Cliente
 	void criarCliente();
@@ -52,8 +50,9 @@ public:
 	void ImprimirTodosClientes();
 
 	//Venda
-	void TodosProdutos(Produto& todos);    
+	 
     void EfetuarVenda();
+	void imprimirTalao();
     int NumVencedor();
     int Numfatura();
     void ArmazenarProVendas(const Venda &venda);
