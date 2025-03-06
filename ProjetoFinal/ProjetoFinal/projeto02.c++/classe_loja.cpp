@@ -512,10 +512,11 @@ void Loja::checkout()
 
 void Loja::ImprimirVendas()
 {
+	// funcao para exibir as pre vendas
 	system("cls"); 
 	int totalValor;
 	if(TotalVendas == 0){
-		cout << "Nenhum Venda cadastrada. " << endl;
+		cout << "Nenhuma Venda cadastrada. " << endl;
 		return;
 	}
 	for(int i = 0; i < TotalVendas;i++){
