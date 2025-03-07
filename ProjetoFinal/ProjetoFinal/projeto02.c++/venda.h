@@ -21,7 +21,7 @@ private:
 
 public:
     Venda();
-    Venda (const string& nome, int idpro, int idcli, int quantidade, double preco);
+    Venda (const  string& nome, int idpro, int idcli, int quantidade, double preco);
 
     int getid()const;
     string getnome() const;	

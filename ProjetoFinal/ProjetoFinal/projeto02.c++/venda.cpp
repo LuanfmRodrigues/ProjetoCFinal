@@ -12,7 +12,7 @@ Venda::Venda()
 
 }
 
-Venda::Venda(const string& nome,int idpro, int idcli, int quantidade, double preco)
+Venda::Venda(const  string& nome,int idpro, int idcli, int quantidade, double preco)
 {
     idvenda = contVenda++;
     this->nome = nome;

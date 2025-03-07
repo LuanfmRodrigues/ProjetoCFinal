@@ -27,6 +27,7 @@ int totalProdutosGlobal = 0; // Inicializa a variável global de produtos
 int totalClientesGlobal = 0; // Inicializa a variável global de clientes
 int TotalVendas = 0;
 
+
 public:
 
 	Loja();  
@@ -56,8 +57,7 @@ public:
     int NumVencedor();
     int Numfatura();
     void ArmazenarProVendas(const Venda &venda);
-    void checkout();
-	void ImprimirVendas();
+   	void CheckoutVendas();
 };
 #endif
 
