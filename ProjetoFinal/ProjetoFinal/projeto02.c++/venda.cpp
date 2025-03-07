@@ -4,6 +4,7 @@ int Venda::contVenda = 1;
 Venda::Venda()
 {
     idvenda = 0;
+    idpro = 0;
 	nome = "Produto";
     idcli = 0;
 	quantidade = 0;
@@ -11,10 +12,11 @@ Venda::Venda()
 
 }
 
-Venda::Venda(const string& nome, int idcli, int quantidade, double preco)
+Venda::Venda(const string& nome,int idpro, int idcli, int quantidade, double preco)
 {
     idvenda = contVenda++;
     this->nome = nome;
+    this->idpro = idpro;
     this->idcli = idcli;
     this->quantidade = quantidade;
     this->preco = preco;
@@ -22,32 +24,43 @@ Venda::Venda(const string& nome, int idcli, int quantidade, double preco)
 
 int Venda::getid() const
 {
-    return 0;
+    return idvenda;
 }
+
 
 string Venda::getnome() const
 {
-    return string();
+    return nome;
+}
+
+int Venda::getidpro() const
+{
+    return idpro;
 }
 
 int Venda::getidcli() const
 {
-    return 0;
+    return idcli;
 }
 
 int Venda::getquantidade() const
 {
-    return 0;
+    return quantidade;
 }
 
 double Venda::getpreco() const
 {
-    return 0.0;
+    return preco;
 }
 
 void Venda::setid(int idvenda)
 {
     this->idvenda = idvenda;
+}
+
+void Venda::setidpro(int idpro)
+{
+    this->idpro = idpro;
 }
 
 void Venda::setnome(string nome)
