@@ -153,12 +153,13 @@ void Loja::RemoverProduto()
         impriTodosProd();
 
         int idProduto;
-        cout << "Qual o ID do produto: ";
-        while (!(cin >> idProduto) || idProduto <= 0) {
-            cout << "ID inválida. Digite um número positivo: ";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
+		cout << "ID do produto: ";
+		while (!(cin >> idProduto) || idProduto <= 0 || procurarProdutoid(idProduto) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');			
+		}
 
         int remProd = procurarProdutoid(idProduto);
         if (remProd >= 0) {
@@ -208,12 +209,12 @@ void Loja::addProExiste()
 		cout << "________________________________________" << endl;
 
 		cout << "ID do produto: ";
-        while (!(cin >> idProduto) || idProduto <= 0) {
-            cout << "Id inválido. Digite um número positivo: ";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-			
-        }
+		while (!(cin >> idProduto) || idProduto <= 0 || procurarProdutoid(idProduto) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');			
+		}
 
 		posicao = procurarProdutoid(idProduto);
 
@@ -222,7 +223,7 @@ void Loja::addProExiste()
 			cout << "Produto não encontrado! \n";
 			return;
 		}else{			
-			cout << "Produto  a ser excluido é: \n" 
+			cout << "Produto: \n" 
 				<< "ID " << vecProdutosGlobal[posicao].getId() << " | "
 				<< "Nome "<< vecProdutosGlobal[posicao].getNome() << " | "
 				<< "Quantidade " << vecProdutosGlobal[posicao].getQuantidade() << " | "
@@ -336,12 +337,12 @@ void Loja::EditarCliente()
 		cout << "________________________________________" << endl;
 
 		cout << "ID do Cliente: ";
-        while (!(cin >> idcliente) || idcliente <= 0) {
-            cout << "Id inválido. Digite um número positivo: ";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-			
-        }
+		while (!(cin >> idcliente) || idcliente <= 0  || ProcurarCliente(idcliente) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');			
+		}
 		posicao = ProcurarCliente(idcliente);
 
 		if(posicao == -1)
@@ -382,15 +383,15 @@ void Loja::EliminarCliente()
         }
         impriTodosProd();
 
-        int idCliente;
-        cout << "Qual o ID do produto: ";
-        while (!(cin >> idCliente) || idCliente <= 0) {
-            cout << "ID inválida. Digite um número positivo: ";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-        }
+        int idcliente;
+		while (!(cin >> idcliente) || idcliente <= 0  || ProcurarCliente(idcliente) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');			
+		}
 
-        int remClie = ProcurarCliente(idCliente);
+        int remClie = ProcurarCliente(idcliente);
 
         if (remClie >= 0) {
 			cout << "Cliente a ser removido: \n" 
@@ -548,11 +549,11 @@ void Loja::EfetuarVenda()
 	if(valid1 == 's'){
 		ImprimirTodosClientes();
 		cout << "Qual ID: \n";
-		while (!(cin >> idcliente) || idcliente <= 0) {
-			cout << "Id inválido. Digite um número positivo: ";
+		while (!(cin >> idcliente) || idcliente <= 0  || ProcurarCliente(idcliente) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
 			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-	
+			cin.ignore(INT_MAX, '\n');			
 		}
 		int posicaoCli = ProcurarCliente(idcliente);
 		if(posicaoCli == -1){
@@ -565,11 +566,11 @@ void Loja::EfetuarVenda()
 		criarCliente();
 		ImprimirTodosClientes();
 		cout << "Qual ID: \n";
-		while (!(cin >> idcliente) || idcliente <= 0) {
-			cout << "Id inválido. Digite um número positivo: ";
+		while (!(cin >> idcliente) || idcliente <= 0  || ProcurarCliente(idcliente) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
 			cin.clear();
-			cin.ignore(INT_MAX, '\n');
-	
+			cin.ignore(INT_MAX, '\n');			
 		}
 		int posicaoCli = ProcurarCliente(idcliente);
 		if(posicaoCli == -1){
@@ -585,12 +586,12 @@ void Loja::EfetuarVenda()
     do{
         
         cout << "Id do produto que deseja: \n";
-            while (!(cin >> idproduto) || idproduto <= 0) {
-                cout << "Id inválido. Digite um número positivo: ";
-                cin.clear();
-                cin.ignore(INT_MAX, '\n');
-        
-        }
+		while (!(cin >> idproduto) || idproduto <= 0  || procurarProdutoid(idproduto) == -1) {
+			cout << "ID inválido ou inexistente. ";
+			cout << "Digiti ID valido: ";
+			cin.clear();
+			cin.ignore(INT_MAX, '\n');			
+		}
         int posicao = procurarProdutoid(idproduto);
         if (posicao == -1){  
 			cout << "Produto não encontrado! \n";
@@ -634,8 +635,8 @@ void Loja::EfetuarVenda()
 
 void Loja::imprimirTalao()
 {
-	int troco, lucro;
-	cout << "Produtos no Carrinho: \n";
+	/*int troco, lucro;
+	cout << "Produtos no Carrinho: \n";*/
 }
 
 int Loja::NumVencedor()
