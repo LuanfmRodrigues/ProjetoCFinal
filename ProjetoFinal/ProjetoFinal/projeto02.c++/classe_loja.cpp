@@ -517,6 +517,18 @@ void Loja::CheckoutVendas()
 	system("pause"); 
 }
 
+int Loja::ProcurarCarrinho(int idvenda)
+{
+	for (int i = 0; i < TotalVendas; i++)
+	{
+		if(vecVendas[i].getid() == idvenda){	
+		return i;	
+		}
+		
+	}
+	return -1;
+}
+
 void Loja::EfetuarVenda()
 {
     int idproduto, quantProdu, idcliente;
@@ -602,8 +614,26 @@ void Loja::EfetuarVenda()
 
 void Loja::imprimirTalao()
 {
-	/*int troco, lucro;
-	cout << "Produtos no Carrinho: \n";*/
+	int compra, troco, lucro;
+	cout << "Produtos no Carrinho: \n";
+	while (!(cin >> compra) || compra <= 0  || ProcurarCarrinho(compra) == -1) {
+		cout << "ID inválido ou inexistente. ";
+		cout << "Digiti ID valido: ";
+		cin.clear();
+		cin.ignore(INT_MAX, '\n');			
+	}
+	int posicao = ProcurarCarrinho(compra);
+	if(posicao == -1){
+		cout << "Produto não encotrado!! \n";
+	}else{
+		cout << "Carrinho: " << endl;
+		cout << "ID Cleinte:" << vecVendas[posicao].getidcli() << " | "
+			<< "Nome: "<< vecVendas[posicao].getnome() << " | "
+			<< "Quantidade: " << vecVendas[posicao].getquantidade() << " | "
+			<< "Preço: € " << vecVendas[posicao].getpreco() << "\n"
+			<< "Subtotal: " << vecVendas[posicao].getpreco() * vecVendas[posicao].getquantidade()<< endl;
+	}
+
 }
 
 int Loja::NumVencedor()
