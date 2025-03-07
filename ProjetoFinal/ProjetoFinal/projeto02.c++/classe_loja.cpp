@@ -19,7 +19,11 @@ Loja::Loja()
 	Cliente clien4("rodrigues", "348524758", "rua d");
 	Cliente clien5("Diego","987654367", "rua luz");
 
-	
+	Venda venda1("Camisa Nike", 1, 2, 15.00); 
+    Venda venda2("Tenis Adidas", 2, 1, 45.00); 
+    Venda venda3("Calça Puma", 3, 3, 25.00); 
+
+ 
 	armazenarProduto(prod1);
 	armazenarProduto(prod2);
 	armazenarProduto(prod3);
@@ -32,6 +36,10 @@ Loja::Loja()
 	ArmazenarCliente(clien3);
 	ArmazenarCliente(clien4);
 	ArmazenarCliente(clien5);
+
+	ArmazenarProVendas(venda1);
+    ArmazenarProVendas(venda2);
+    ArmazenarProVendas(venda3);
 }
 
 void Loja::criarProduto() {
@@ -485,28 +493,27 @@ void Loja::CheckoutVendas()
 	// funcao para exibir as pre vendas
 	system("cls"); 
 	int totalValor = 0;
-	int idvenda =0;
 	if(TotalVendas == 0){
 		cout << "Nenhuma Venda cadastrada. " << endl;
 		return;
 	}
+	cout << "________________________________________" << endl;
+    cout << "           Checkout das Vendas          " << endl;
+    cout << "________________________________________" << endl;
+    cout << "                                        " << endl;
 	
-	for(int i = 0; i < TotalVendas;i++){
-		if(vecVendas[i].getid() == idvenda){
-			cout << "ID Cleinte:" << vecVendas[i].getidcli() << " | "
-					<< "ID Produto: " << vecVendas[i].getidpro() << " | "
-					<< "Nome: "<< vecVendas[i].getnome() << " | "
-					<< "Quantidade: " << vecVendas[i].getquantidade() << " | "
-					<< "Preço: € " << vecVendas[i].getpreco() << "\n"
-					<< "Subtotal: " << vecVendas[i].getpreco() * vecVendas[i].getquantidade()<< endl;
-
-			totalValor += vecVendas[i].getpreco() * vecVendas[i].getquantidade();
-		}		 
+	for(int i = 0; i < TotalVendas;i++){		
+		cout << "ID Cleinte:" << vecVendas[i].getidcli() << " | "
+				<< "Nome: "<< vecVendas[i].getnome() << " | "
+				<< "Quantidade: " << vecVendas[i].getquantidade() << " | "
+				<< "Preço: € " << vecVendas[i].getpreco() << "\n"
+				<< "Subtotal: " << vecVendas[i].getpreco() * vecVendas[i].getquantidade()<< endl;
+		
+		totalValor += vecVendas[i].getpreco() * vecVendas[i].getquantidade();
+				
 	}
-	idvenda++;
-	
+		
 	cout << "O Valor total da compra é €: " << totalValor << endl;
-	
 	system("pause"); 
 }
 
@@ -558,8 +565,7 @@ void Loja::EfetuarVenda()
 				 << "ID " << vecProdutosGlobal[posicao].getId() << " |"
 				 << "Nome "<< vecProdutosGlobal[posicao].getNome() <<" |"
 				 << "Quantidade " << vecProdutosGlobal[posicao].getQuantidade()  <<" |"
-				 << "Preço por unidade € " << vecProdutosGlobal[posicao].getPreco() << " |" 
-				 << "Subtotal: " << vecProdutosGlobal[posicao].getPreco() * quantProdu<< endl;
+				 << "Preço por unidade € " << vecProdutosGlobal[posicao].getPreco() << " |" << endl;
 		}  
         cout << "Quantidade que deseja \n";
         cin >> quantProdu;
@@ -577,20 +583,20 @@ void Loja::EfetuarVenda()
         }else{			
             vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() - quantProdu);
             
-            Venda venda( vecProdutosGlobal[posicao].getNome(),vecProdutosGlobal[posicao].getId(),vecClientesGlobal[posicaoCli].getid(), quantProdu, vecProdutosGlobal[posicao].getPreco());
+            Venda venda( vecProdutosGlobal[posicao].getNome(),vecClientesGlobal[posicaoCli].getid(), quantProdu, vecProdutosGlobal[posicao].getPreco());
 			ArmazenarProVendas(venda);
-						
+					
         }
-		CheckoutVendas();
+		
 		
 
-        cout << "Produto adicionado ao carrinhho!  \n";         
-        
+    cout << "Produto adicionado ao carrinhho!  \n";          
     cout << "Deseja adicionar mais produtos? (s|n) \n";
     cin >> valid;
     cin.ignore();
 
     } while (valid == 's' || valid =='S');
+	CheckoutVendas();
 
 }
 
