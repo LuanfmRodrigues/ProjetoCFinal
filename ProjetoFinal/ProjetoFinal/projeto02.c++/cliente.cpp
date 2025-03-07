@@ -10,7 +10,7 @@ Cliente::Cliente()
 	morada = "Morada";
 	
 }
-Cliente::Cliente(string nome, string morada, string telefone)
+Cliente::Cliente(string nome, string telefone, string morada)
 {
     id = contClie++;
 	this->nome = nome;
