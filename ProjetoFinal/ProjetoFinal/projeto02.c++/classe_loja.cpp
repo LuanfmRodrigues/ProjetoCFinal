@@ -568,120 +568,129 @@ void Loja::tempo()
          << time_info.tm_sec << endl;
 }
 
-void Loja::EfetuarVenda()
+void Loja::EfetuarVenda() 
 {
     int idproduto, quantProdu, idcliente;
-	double Valorpago;
+    double Valorpago;
     char valid, valid1;
-    system ("cls");
+    system("cls");
     cout << "________________________________________" << endl;
     cout << "            Vendas de Produto           " << endl;
     cout << "________________________________________" << endl;
     cout << "                                        " << endl;
-         
+
     cout << "Para efetuar a venda tem que ter ficha ou criar uma. " << endl;
-	cout << "Se possui ficha digiti (s) ou outra telca pra criar. " << endl;
-	cin >> valid1;
-	if(valid1 == 's'){
-		ImprimirTodosClientes();
+    cout << "Se possui ficha digite (s) ou outra tecla para criar. " << endl;
+    cin >> valid1;
+    if (valid1 == 's' || valid1 == 'S') {
+        ImprimirTodosClientes();
+    } else {
+        criarCliente();
+        ImprimirTodosClientes();
+    }
 
-	}else{
-		criarCliente();
-		ImprimirTodosClientes();
-	}
-	cout << "Qual ID: \n";
-	while (!(cin >> idcliente) || idcliente <= 0  || ProcurarCliente(idcliente) == -1) {
-		cout << "ID inválido ou inexistente. ";
-		cout << "Digiti ID valido: ";
-		cin.clear();
-		cin.ignore(INT_MAX, '\n');			
-	}
-	int posicaoCli = ProcurarCliente(idcliente);
+    cout << "Qual ID: \n";
+    while (!(cin >> idcliente) || idcliente <= 0 || ProcurarCliente(idcliente) == -1) {
+        cout << "ID inválido ou inexistente. ";
+        cout << "Digite ID válido: ";
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+    }
+    int posicaoCli = ProcurarCliente(idcliente);
 
-    do{
-		 //Imprimiri todos os produtos da Loja
-        impriTodosProd(); 
+    do {
+        // Imprimir todos os produtos da Loja
+        impriTodosProd();
         cout << "Id do produto que deseja: \n";
-		
-		while (!(cin >> idproduto) || idproduto <= 0  || procurarProdutoid(idproduto) == -1) {
-			cout << "ID inválido ou inexistente. ";
-			cout << "Digiti ID valido: ";
-			cin.clear();
-			cin.ignore(INT_MAX, '\n');			
-		}
-        int posicao = procurarProdutoid(idproduto);
-        if (posicao == -1){  
-			cout << "Produto não encontrado! \n";
-            return;
-		}else{     
-			cout << "Produto: \n "<< endl
-				 << "ID: " << vecProdutosGlobal[posicao].getId() << " |"
-				 << "Nome: "<< vecProdutosGlobal[posicao].getNome() <<" |"
-				 << "Quantidade: " << vecProdutosGlobal[posicao].getQuantidade()  <<" |"
-				 << "Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |" << endl;
-			cout << "Os Produtos estão com preço de custo, o valor de venda tem um acrescimo de 30% " << endl;
-		}  
-        cout << "Quantidade que deseja \n";
-        cin >> quantProdu;
-        while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n')
-        //cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
-        {
+
+        while (!(cin >> idproduto) || idproduto <= 0 || procurarProdutoid(idproduto) == -1) {
+            cout << "ID inválido ou inexistente. ";
+            cout << "Digite ID válido: ";
             cin.clear();
             cin.ignore(INT_MAX, '\n');
-            cout << "Quantidade invalida." << endl;
+        }
+        int posicao = procurarProdutoid(idproduto);
+        if (posicao == -1) {
+            cout << "Produto não encontrado! \n";
+            return;
+        } else {
+            cout << "Produto: \n " << endl
+                 << "ID: " << vecProdutosGlobal[posicao].getId() << " |"
+                 << "Nome: " << vecProdutosGlobal[posicao].getNome() << " |"
+                 << "Quantidade: " << vecProdutosGlobal[posicao].getQuantidade() << " |"
+                 << "Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |" << endl;
+            cout << "Os Produtos estão com preço de custo, o valor de venda tem um acréscimo de 30% " << endl;
+        }
+
+        cout << "Quantidade que deseja: \n";
+        cin >> quantProdu;
+        while (cin.fail() || quantProdu <= 0 || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << "Quantidade inválida." << endl;
             cout << "Qual a quantidade: ";
             cin >> quantProdu;
-        }  
-        if(quantProdu > vecProdutosGlobal[posicao].getQuantidade()) {
-            cout << "Nao tem essa quantidade de produto no estoque. \n";
-        }else{	 
-			//reduz a qaunidade de produtos que exite no estoque
-            vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() - quantProdu);				
         }
-		
 
-		float totalValor = (vecProdutosGlobal[posicao].getPreco()* quantProdu)*1.3;
+        if (quantProdu > vecProdutosGlobal[posicao].getQuantidade()) {
+            cout << "Não tem essa quantidade de produto no estoque. \n";
+        } else {
+            // Reduz a quantidade de produtos no estoque
+            vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() - quantProdu);
 
-		cout << "checkout da Venda: \n";
-		cout << "Produto: \n "<< endl
-		<< "ID: " << vecProdutosGlobal[posicao].getId() << " |"
-		<< "Nome: "<< vecProdutosGlobal[posicao].getNome() <<" |"
-		<< "Quantidade: " << quantProdu  <<" |"
-		<< "Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |" 
-		<< "Preço Total: " << totalValor << endl;
+            float totalValor = (vecProdutosGlobal[posicao].getPreco() * quantProdu) * 1.3;
 
-		cout << "confirmar Compra: (s|n) \n";
-		cin >> valid;
-		if(valid == 's' || valid == 'S'){
-			cout << "Valor a pagar:€ " << totalValor << "\n";
-			while (!(cin >> Valorpago) || Valorpago <= 0) {
-				cout << "Preço inválido. Digite um valor positivo: ";
-				cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			}
-			if(Valorpago < totalValor){
-				cout << "Valor insuficiente. \n" 
-					 << "falta: € " << totalValor - Valorpago << endl; 
-			}else{
-				Venda venda( vecProdutosGlobal[posicao].getNome(),vecClientesGlobal[posicaoCli].getid(), quantProdu, vecProdutosGlobal[posicao].getPreco(), totalValor);
-				ArmazenarProVendas(venda);
-				//imprimirTalao();
+            cout << "Checkout da Venda: \n";
+            cout << "Produto: \n " << endl
+                 << "ID: " << vecProdutosGlobal[posicao].getId() << " |"
+                 << "Nome: " << vecProdutosGlobal[posicao].getNome() << " |"
+                 << "Quantidade: " << quantProdu << " |"
+                 << "Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |"
+                 << "Preço Total: € " << totalValor << endl;
 
-			}
-		}else{
-			vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() + quantProdu);
-			cout << "compra Cancelada! "<< endl;
-		}	
-		
+            cout << "Confirmar Compra: (s|n) \n";
+            cin >> valid;
+            if (valid == 's' || valid == 'S') {
+                cout << "Valor a pagar: € " << totalValor << "\n";
+                while (true) { // Loop infinito até que o valor seja válido
+                    cout << "Digite o valor pago: € ";
+                    while (!(cin >> Valorpago) || Valorpago <= 0) {
+                        cout << "Valor inválido. Digite um valor positivo: ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
 
-       
-    cout << "Deseja realizar mais compras? (s|n) \n";
-    cin >> valid;
-    cin.ignore();
+                    if (Valorpago < totalValor) {
+                        cout << "Valor insuficiente. \n"
+                             << "Falta: € " << totalValor - Valorpago << endl;
+                    } else {
+                        if (Valorpago > totalValor) {
+                            cout << "Pagamento efetuado com sucesso! \n";
+                            cout << "Troco: € " << Valorpago - totalValor << endl;
+                        } else {
+                            cout << "Pagamento efetuado com sucesso! \n";
+                        }
 
-    } while (valid == 's' || valid =='S');
-	
+                        // Registrar a venda
+                        Venda venda(vecProdutosGlobal[posicao].getNome(), vecClientesGlobal[posicaoCli].getid(),
+                                    quantProdu, vecProdutosGlobal[posicao].getPreco(), totalValor);
+                        ArmazenarProVendas(venda);
+                        //imprimirTalao(); 
+                        break; // Sai do loop de pagamento
+                    }
+                }
+            } else {
+                // Reverter a redução de estoque se a compra for cancelada
+                vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() + quantProdu);
+                cout << "Compra cancelada! " << endl;
+            }
+        }
 
+        cout << "Deseja adicionar outro produto? (s|n): ";
+        cin >> valid;
+    } while (valid == 's' || valid == 'S');
+
+    cout << "Venda finalizada. Obrigado! \n";
 }
 
 void Loja::imprimirTalao()
