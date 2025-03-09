@@ -11,7 +11,7 @@ Produto::Produto()
 	
 }
 
-Produto::Produto(string Nome, int Quantidade, float Preco)
+Produto::Produto(string Nome, int Quantidade, double Preco)
 {
 	Id = contProd++;
 	this->Nome = Nome;
@@ -35,7 +35,7 @@ int Produto::getQuantidade()const
 	return Quantidade;
 }
 
-float Produto::getPreco()const
+double Produto::getPreco()const
 {
 	return Preco;
 }
@@ -55,7 +55,7 @@ void Produto::setQuantidade(int quantidade)
 	Quantidade = quantidade;
 }
 
-void Produto::setPreco(float preco)
+void Produto::setPreco(double preco)
 {
 	Preco = preco;
 }

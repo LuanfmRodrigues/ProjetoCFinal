@@ -61,6 +61,9 @@ public:
    	void CheckoutVendas();
 	int ProcurarCarrinho(int idvenda);
 	void tempo();
+
+	//linhas
+	
 };
 #endif
 

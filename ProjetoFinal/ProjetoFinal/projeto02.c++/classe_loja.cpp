@@ -66,54 +66,66 @@ void Loja::criarProduto() {
 	string nome;
     char cond, valid1;
     int quantidade;
-    float preco;
+    double preco;
 
     cin.ignore();
     do {
-        cout << "________________________________________" << endl;
-        cout << "        Adicionar Novo Produto          " << endl;
-        cout << "________________________________________" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                        Criar Produto                   |" << endl;
+		cout << "|========================================================|" << endl;
 
-        cout << "Nome do produto: ";
-        getline(cin, nome);
-
+        cout << "| " <<  "Nome do Produto:";
+		getline(cin, nome);
+				
         // Valida se a quantidade é um números positivos
-        cout << "Quantidade: ";
+        cout << "| " <<"Quantidade:";
+		
         while (!(cin >> quantidade) || quantidade <= 0 || cin.peek() != '\n') {
 			//cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
             cout << "Quantidade inválida. Digite um número inteiro positivo: ";
+			cout << "|========================================================|" << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpa a memoria temporaria
+			cout << "|========================================================|" << endl;
         }
 
         // Valida se o preço é um números positivos
-        cout << "Preço: ";
-        while (!(cin >> preco) || preco <= 0) {
-            cout << "Preço inválido. Digite um valor positivo: ";
-            cin.clear();
+		
+		cout << "|" <<"Valor: ";
+		 while (!(cin >> preco) || preco <= 0) {
+            
+			cout << "|" << "Preço inválido. Digite um valor positivo:";
+			cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-
-        cout << "Produto criado: \n" << endl;
-        cout << "Nome: " << nome << " | Quantidade: " << quantidade << " | Preço: €"  << preco << endl;
-
-        cout << "Deseja Criar o produto? (s|n) \n";
+		cout << "|========================================================|"<< endl;
+        cout << "|Produto criado:                                         |" << endl;
+		cout << "|========================================================|" << endl;
+        cout << "|Nome: " << nome << " | Quantidade: " << quantidade << " | Valor: €"  << preco << "                |"<< endl;
+		cout << "|========================================================|" << endl;
+        cout <<"|Deseja Criar o produto? (s|n)";
         cin >> cond;
         cin.ignore();
+		cout << "|========================================================|" << endl;
 
         if (cond == 's' || cond == 'S') {
 
             Produto totalProdutosGlobal(nome, quantidade,preco);
 			armazenarProduto(totalProdutosGlobal);
-            cout << "Produto adicionado com sucesso!" << endl;
+            cout <<"|" << "Produto adicionado com sucesso!" << endl;
+			cout << "|========================================================|" << endl;
 
         } else {
-            cout << "Produto não foi criado! \n";
+            cout <<"|"<< "Produto não foi criado! ";
+			cout << "|========================================================|" << endl;
         }
 
-        cout << "Deseja criar mais produtos? (s|n) \n";
+        cout <<"|"<< "Deseja criar mais produtos? (s|n) ";
         cin >> valid1;
         cin.ignore();
+		cout << "|========================================================|" << endl;
 
     } while (valid1 == 's' || valid1 == 'S');
 }
@@ -650,8 +662,10 @@ void Loja::EfetuarVenda()
 
             cout << "Confirmar Compra: (s|n) \n";
             cin >> valid;
-            if (valid == 's' || valid == 'S') {
+            if (valid == 's' || valid == 'S') 
+			{
                 cout << "Valor a pagar: € " << totalValor << "\n";
+
                 while (true) { // Loop infinito até que o valor seja válido
                     cout << "Digite o valor pago: € ";
                     while (!(cin >> Valorpago) || Valorpago <= 0) {
@@ -680,7 +694,7 @@ void Loja::EfetuarVenda()
                     }
                 }
             } else {
-                // Reverter a redução de estoque se a compra for cancelada
+                // aumenta o estoque se a compra for cancelada
                 vecProdutosGlobal[posicao].setQuantidade(vecProdutosGlobal[posicao].getQuantidade() + quantProdu);
                 cout << "Compra cancelada! " << endl;
             }

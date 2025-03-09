@@ -17,18 +17,20 @@ void menuVendas(Loja& loja)
 	system("cls");
 	int sel;
 	do
-	{
-		cout << "______________________________________" << endl;
-		cout << "               MENU VENDAS            " << endl;
-		cout << "______________________________________" << endl;
-		cout << "  Selecione a opcao para continuar:   " << endl;
-		cout << "______________________________________" << endl;
-		cout << "          1 - Stock Produtos          " << endl;
-		cout << "          2 - Lista Clientes          " << endl;
-		cout << "          3 - Criar Clientes          " << endl;
-		cout << "              4 - Vendas              " << endl;
-		cout << "              5 - sair                " << endl;
-		cout << "______________________________________" << endl;
+	{	
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                        MENU vENDAS                     |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|           Selecione a opcao para continuar:            |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|              1 - Stock Produtos                        |" << endl;
+		cout << "|              2 - Lista atletas                         |" << endl;
+		cout << "|              3 - Adicionar Atleta                      |" << endl;
+		cout << "|              4 - Vendas                                |" << endl;
+		cout << "|              5 - Voltar                                |" << endl;
+		cout << "|========================================================|" << endl;
 		cin >> sel;
 		switch (sel)
 		{
@@ -63,17 +65,19 @@ void menuStock(Loja& loja)
 	do
 	{
 		system("cls");
-		cout << "______________________________________" << endl;
-		cout << "               MENU STOCK             " << endl;
-		cout << "______________________________________" << endl;
-		cout << "  Selecione a opcao para continuar:   " << endl;
-		cout << "______________________________________" << endl;
-		cout << "          1 - Criar o Produto         " << endl;
-		cout << "     2 - Adicionar Produto Existente  " << endl;
-		cout << "          3 - Excluir Produto         " << endl;
-		cout << "              4 - Stock               " << endl;
-		cout << "              5 - Voltar              " << endl;
-		cout << "______________________________________" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                        MENU STOCK                      |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|           Selecione a opcao para continuar:            |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|              1 - Criar o Produto                       |" << endl;
+		cout << "|              2 - Adicionar Produto Existente           |" << endl;
+		cout << "|              3 - Excluir Produto                       |" << endl;
+		cout << "|              4 - Stock                                 |" << endl;
+		cout << "|              5 - Voltar                                |" << endl;
+		cout << "|========================================================|" << endl;
 		cin >> sel2;
 		switch (sel2)
 		{
@@ -105,17 +109,18 @@ void menuRelatorio() {
 	int sel3;
 	do
 	{
-		
-		cout << "______________________________________" << endl;
-		cout << "           MENU RELAT�RIO             " << endl;
-		cout << "______________________________________" << endl;
-		cout << "Selecione a opcao para continuar: " << endl;
-		cout << "______________________________________" << endl;
-		cout << "         1 - Relat�rio Stock          " << endl;
-		cout << " 2 - Relat�rio de Vendas por Produto  " << endl;
-		cout << "    3 - Relat�rio Total de Vendas     " << endl;
-		cout << "              4 - Voltar              " << endl;
-		cout << "______________________________________" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                       MENU RELAT�RIO                  |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|             Selecione a opcao para continuar:          |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|             1 - Relat�rio Stock                       |" << endl;
+		cout << "|             2 - Relat�rio de Vendas por Produto       |" << endl;
+		cout << "|             3 - Relat�rio Total de Vendas             |" << endl;
+		cout << "|             4 - Voltar                                 |" << endl;
+		cout << "|========================================================|" << endl;
 		cin >> sel3;
 		switch (sel3)
 		{
@@ -142,19 +147,20 @@ void menuCLiente(Loja& loja) {
 
 	int sel4;
 	do
-	{
-		 
-		cout << "______________________________________" << endl;
-		cout << "             MENU CLIENTE             " << endl;
-		cout << "______________________________________" << endl;
-		cout << "  Selecione a opcao para continuar:   " << endl;
-		cout << "______________________________________" << endl;
-		cout << "           1 - Criar Cliente          " << endl;
-		cout << "           2 - Excluir Cliente        " << endl;
-		cout << "           3 - Editar CLiente         " << endl;
-		cout << "           4 - Clientes               " << endl;
-		cout << "           5 - Voltar                 " << endl;
-		cout << "______________________________________" << endl;
+	{	
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                        MENU Atletas                    |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|           Selecione a opcao para continuar:            |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|              1 - Criar ficha do Atleta                 |" << endl;
+		cout << "|              2 - Eliminar Atleta                       |" << endl;
+		cout << "|              3 - Editar CLiente                        |" << endl;
+		cout << "|              4 - Atletas                               |" << endl;
+		cout << "|              5 - Voltar                                |" << endl;
+		cout << "|========================================================|" << endl;
 		cin >> sel4;
 		switch (sel4)
 		{
@@ -187,17 +193,19 @@ void menuPrincipal(Loja& loja) {
 	do
 	{
 		system("cls");
-		cout << "______________________________________" << endl;
-		cout << "           MENU PRINCIPAL             " << endl;
-		cout << "______________________________________" << endl;
-		cout << "  Selecione a opcao para continuar:   " << endl;
-		cout << "______________________________________" << endl;
-		cout << "             1 - Vendas               " << endl;
-		cout << "             2 - Stock                " << endl;
-		cout << "             3 - Relatorio            " << endl;
-		cout << "             4 - Cliente              " << endl;
-		cout << "             5 - Sair                 " << endl;
-		cout << "______________________________________" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|            Bem-vindo ao sistema Open Box CrossFit!     |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                       MENU PRINCIPAL                   |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|           Selecione a opcao para continuar:            |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                        1 - Vendas                      |" << endl;
+		cout << "|                        2 - Stock                       |" << endl;
+		cout << "|                        3 - Relatorio                   |" << endl;
+		cout << "|                        4 - Atletas                     |" << endl;
+		cout << "|                        5 - Sair                        |" << endl;
+		cout << "|========================================================|" << endl;
 		cin >> sel1;
 		switch (sel1)
 		{

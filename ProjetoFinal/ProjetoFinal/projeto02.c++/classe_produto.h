@@ -12,23 +12,23 @@ private:
 	static int contProd;
 	int Id;
 	string Nome;
-	float Preco;
+	double Preco;
 	int Quantidade;
 
 public:
 
 	Produto();
-	Produto(string Nome, int Quantidade, float Preco);
+	Produto(string Nome, int Quantidade, double Preco);
 
 	string getNome() const;
 	int getId()const;
 	int getQuantidade()const;
-	float getPreco()const;
+	double getPreco()const;
 
 	void setNome(string nome);
 	void setId(int idproduto);
 	void setQuantidade(int quantidade);
-	void setPreco(float preco);
+	void setPreco(double preco);
 
 };
 #endif

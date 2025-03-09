@@ -1,4 +1,5 @@
 #include "validacoes.h"
+#include <iomanip> // Para setw e setfill
 #include <cctype> // Para usar a função isdigit
 
 // Função para validar o telefone (verifica se tem exatamente 9 dígitos)
