@@ -19,6 +19,7 @@ Venda::Venda(const  string& nome, int idcli, int quantidade, double preco, doubl
     this->idcli = idcli;
     this->quantidade = quantidade;
     this->preco = preco;
+    this->totaliva = totaliva;
 }
 
 int Venda::getid() const
