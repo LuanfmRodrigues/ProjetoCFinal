@@ -8,10 +8,11 @@ Venda::Venda()
     idcli = 0;
 	quantidade = 0;
     preco = 0.0;
+    totaliva = 0.0;
 
 }
 
-Venda::Venda(const  string& nome, int idcli, int quantidade, double preco)
+Venda::Venda(const  string& nome, int idcli, int quantidade, double preco, double totaliva)
 {
     idvenda = contVenda++;
     this->nome = nome;
@@ -47,6 +48,11 @@ double Venda::getpreco() const
     return preco;
 }
 
+double Venda::gettotaliva() const
+{
+    return totaliva;
+}
+
 void Venda::setid(int idvenda)
 {
     this->idvenda = idvenda;
@@ -70,4 +76,9 @@ void Venda::setquantidade(int quantidade)
 void Venda::setpreco(double preco)
 {
     this->preco = preco;
+}
+
+void Venda::settotaliva(double totaliva)
+{
+    this->totaliva = totaliva;
 }

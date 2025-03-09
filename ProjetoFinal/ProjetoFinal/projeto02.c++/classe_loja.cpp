@@ -22,13 +22,16 @@ Loja::Loja()
 	Cliente clien4("rodrigues", "348524758", "rua d");
 	Cliente clien5("Diego","987654367", "rua luz");
 
-	Venda venda1("Camisa Nike", 1, 2, 15.00); 
-    Venda venda2("Tenis Adidas", 2, 1, 45.00); 
-    Venda venda3("Calça Puma", 3, 3, 25.00); 
-	Venda venda4("Nano Crossfit", 7, 1, 75.00); 
-    Venda venda5("Corta salto", 4, 2, 20.00); 
-    Venda venda6("Estafas Crossfit", 5, 2, 70.00); 
-
+    Venda venda1("Camisa Nike", 1, 2, 15.00, 39.00);
+    Venda venda2("Tenis Adidas", 2, 1, 45.00,58.50);
+    Venda venda3("Calça Puma", 3, 3, 25.00, 97.50);
+    Venda venda4("Nano Crossfit", 7, 1, 75.00, 97.50);
+    Venda venda5("Corta salto", 4, 2, 10.00, 26.00);
+    Venda venda6("Estafas Crossfit", 5, 2, 35.00, 91.00);
+    Venda venda7("Camisa Reebok", 1, 1, 10.00, 13.00);
+    Venda venda8("Metcom Crossfit", 2, 1, 75.00, 97.50);
+    Venda venda9("Camisa Nike", 3, 2, 15.00, 39.00);
+    Venda venda10("Tenis Adidas", 4, 1, 45.00, 58.50);
  
 	armazenarProduto(prod1);
 	armazenarProduto(prod2);
@@ -51,6 +54,11 @@ Loja::Loja()
 	ArmazenarProVendas(venda4);
     ArmazenarProVendas(venda5);
     ArmazenarProVendas(venda6);
+	ArmazenarProVendas(venda7);
+    ArmazenarProVendas(venda8);
+	ArmazenarProVendas(venda9);
+    ArmazenarProVendas(venda10);
+   
 }
 
 void Loja::criarProduto() {
@@ -518,7 +526,7 @@ void Loja::CheckoutVendas()
 				<< "Nome: "<< vecVendas[i].getnome() << " | "
 				<< "Quantidade: " << vecVendas[i].getquantidade() << " | "
 				<< "Preço: € " << vecVendas[i].getpreco() << "\n"
-				<< "total com iva: " << (vecVendas[i].getpreco() * vecVendas[i].getquantidade())*1.3<< endl;
+				<< "total com iva: " << vecVendas[i].gettotaliva() << endl;
 		
 		totalValor += (vecVendas[i].getpreco() * vecVendas[i].getquantidade())*1.3;
 				
@@ -655,7 +663,7 @@ void Loja::EfetuarVenda()
 				cout << "Valor insuficiente. \n" 
 					 << "falta: € " << totalValor - Valorpago << endl; 
 			}else{
-				Venda venda( vecProdutosGlobal[posicao].getNome(),vecClientesGlobal[posicaoCli].getid(), quantProdu, vecProdutosGlobal[posicao].getPreco());
+				Venda venda( vecProdutosGlobal[posicao].getNome(),vecClientesGlobal[posicaoCli].getid(), quantProdu, vecProdutosGlobal[posicao].getPreco(), totalValor);
 				ArmazenarProVendas(venda);
 				//imprimirTalao();
 
