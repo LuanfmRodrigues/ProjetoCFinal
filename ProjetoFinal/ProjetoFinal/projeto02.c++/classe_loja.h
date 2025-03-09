@@ -12,6 +12,7 @@
 #include <iomanip>
 #include <limits> 
 #include <climits>
+#include <ctime>
 #include "validacoes.h"
 
 
@@ -59,6 +60,7 @@ public:
     void ArmazenarProVendas(const Venda &venda);
    	void CheckoutVendas();
 	int ProcurarCarrinho(int idvenda);
+	void tempo();
 };
 #endif
 
