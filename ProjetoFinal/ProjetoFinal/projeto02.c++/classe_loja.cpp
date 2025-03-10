@@ -790,7 +790,7 @@ void Loja::imprimirTalao()
 {
 	system("cls");
 	int FaturaNumero = Numfatura(); 
-	int VenceNumero = NumVencedor();
+	int VenceNumero = Numfatura();
 	int posicao = TotalVendas -1; // vei pegar a ultima venda no vetor, no caso a ultima venda realizada.
 	cout << "|========================================================|" << endl;
 	cout << "|                         Fatura                         |" << endl;
@@ -829,26 +829,13 @@ void Loja::imprimirTalao()
 	}
 }
 
-int Loja::NumVencedor()
-{
-    //para gerar numero vencedor e do cliente
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<int> distrib(1000, 9999);
-    long long numero;
-    do {
-        numero = distrib(gen);
-    } while (numero <= 0);
-    return (numero < 0) ? -numero : numero;
-}
-
 int Loja::Numfatura()
 {
     //gera numero da fatura
     random_device rd;
     mt19937 ger(rd());
     uniform_int_distribution<int> distrib(1000, 9999);
-    long long numero;
+    int numero;
     do {
         numero = distrib(ger);
     } while (numero <= 0);
