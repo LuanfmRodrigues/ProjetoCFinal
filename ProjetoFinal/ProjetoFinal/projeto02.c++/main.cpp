@@ -108,7 +108,7 @@ void menuStock(Loja& loja)
 
 }
 
-void menuRelatorio() {
+void menuRelatorio(Loja& loja) {
 
 	int sel3;
 	do
@@ -117,14 +117,15 @@ void menuRelatorio() {
 		cout << "|========================================================|" << endl;
 		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
 		cout << "|========================================================|" << endl;
-		cout << "|                       MENU RELAT�RIO                  |" << endl;
+		cout << "|                       MENU RELAToRIO                   |" << endl;
 		cout << "|========================================================|" << endl;
 		cout << "|             Selecione a opcao para continuar:          |" << endl;
 		cout << "|========================================================|" << endl;
-		cout << "|             1 - Relat�rio Stock                       |" << endl;
-		cout << "|             2 - Relat�rio de Vendas por Produto       |" << endl;
-		cout << "|             3 - Relat�rio Total de Vendas             |" << endl;
-		cout << "|             4 - Voltar                                 |" << endl;
+		cout << "|             1 - Produto Mais Vendido                   |" << endl;
+		cout << "|             2 - Produto Menos vendido                  |" << endl;
+		cout << "|             3 - Lucro por produto                      |" << endl;
+		cout << "|             4 - Atleta que mais comprou                |" << endl;
+		cout << "|             5 - Voltar                                 |" << endl;
 		cout << "|========================================================|" << endl;
 		cin >> sel3;
 		switch (sel3)
@@ -139,15 +140,18 @@ void menuRelatorio() {
 			//venda.relatoriVendas();
 			break;
 		case 4:
-		cout << "|Sair.                                                   |" << endl;
-		cout << "|========================================================|" << endl;
+			loja.ClienteMaisComprou();
+			break;
+		case 5:
+			cout << "|Sair.                                                   |" << endl;
+			cout << "|========================================================|" << endl;
 			break;
 		default:
-		cout << "|Opcao invalida!                                         |" << endl;
-		cout << "|========================================================|" << endl;
+			cout << "|Opcao invalida!                                         |" << endl;
+			cout << "|========================================================|" << endl;
 			break;
 		}
-	} while (sel3 != 4);
+	} while (sel3 != 5);
 }
 
 void menuCLiente(Loja& loja) {  
@@ -186,12 +190,12 @@ void menuCLiente(Loja& loja) {
 			
 			break;
 		case 5:
-		cout << "|Sair.                                                   |" << endl;
-		cout << "|========================================================|" << endl;
+			cout << "|Sair.                                                   |" << endl;
+			cout << "|========================================================|" << endl;
 			break;
 		default:
-		cout << "|Opcao invalida!                                         |" << endl;
-		cout << "|========================================================|" << endl;
+			cout << "|Opcao invalida!                                         |" << endl;
+			cout << "|========================================================|" << endl;
 			break;
 		}
 	} while (sel4 != 5);
@@ -226,7 +230,7 @@ void menuPrincipal(Loja& loja) {
 			menuStock(loja);		
 			break;
 		case 3:
-			menuRelatorio();
+			menuRelatorio(loja);
 			break;
 		case 4:
 			menuCLiente(loja);

@@ -61,7 +61,8 @@ public:
 	int ProcurarCarrinho(int idvenda);
 	void tempo();
 
-	//linhas
+	//relatorios
+	void ClienteMaisComprou();
 	
 };
 #endif

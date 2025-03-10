@@ -76,27 +76,27 @@ void Loja::criarProduto() {
 		cout << "|                        Criar Produto                   |" << endl;
 		cout << "|========================================================|" << endl;
 
-        cout << "| " <<  "Nome do Produto:";
+        cout << "| Nome do Produto:";
 		getline(cin, nome);
 				
         // Valida se a quantidade é um números positivos
-        cout << "| " <<"Quantidade:";
+        cout << "| Quantidade:";
 		
         while (!(cin >> quantidade) || quantidade <= 0 || cin.peek() != '\n') {
 			//cin.peek() != '\n': Verifica se há restos na entrada, impedindo números decimais
-            cout << "Quantidade inválida. Digite um número inteiro positivo: ";
-			cout << "|========================================================|" << endl;
-            cin.clear();
+            cout << "|Quantidade inválida. Digite um número inteiro positivo: ";
+			cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpa a memoria temporaria
-			cout << "|========================================================|" << endl;
+			
         }
+		cout << "|========================================================|" << endl;
 
         // Valida se o preço é um números positivos
 		
-		cout << "|" <<"Valor: ";
+		cout << "| Valor: ";
 		 while (!(cin >> preco) || preco <= 0) {
             
-			cout << "|" << "Preço inválido. Digite um valor positivo:";
+			cout << "| Preço inválido. Digite um valor positivo:";
 			cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -632,6 +632,7 @@ void Loja::tempo()
          << time_info.tm_sec << endl;
 }
 
+
 void Loja::EfetuarVenda() 
 {
     int idproduto, quantProdu, idcliente;
@@ -843,4 +844,39 @@ int Loja::Numfatura()
     return (numero < 0) ? -numero : numero;
 }
 
+void Loja::ClienteMaisComprou()
+{
+	
+	int vec[TotalVendas];
+	int cont[TotalVendas] ;
 
+	for (int i = 0; i < TotalVendas; i++) {
+        cont[i] = 0;
+    }
+	for (int i = 0; i < TotalVendas; i++){
+		vec[i] = vecVendas[i].getidcli();
+	}
+	for (int i = 0; i < TotalVendas; i++)
+	{
+		for (int j = 0; j < TotalVendas; j++)
+		{
+			if(vec[i] == vecVendas[j].getidcli()){
+				cont[i]++;
+			}
+		}
+	}
+	int Compras = 0, cliente = vec[0];
+	for (int i = 0; i < TotalVendas; i++)
+	{
+		if(cont[i] > Compras){
+			Compras = cont[i];
+			cliente = vec[i];
+		}
+	}
+	if (Compras > 0){
+		cout << "|O Atleta que mais comprou foi do id: " << cliente << " Realizou: "<< Compras << " compras." << endl;
+	}else{
+		cout <<"| Não tem registro de commpra "<< endl;
+	}
+	system("pause");
+}
