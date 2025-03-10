@@ -109,6 +109,7 @@ void menuRelatorio() {
 	int sel3;
 	do
 	{
+		system("cls");
 		cout << "|========================================================|" << endl;
 		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
 		cout << "|========================================================|" << endl;
@@ -148,6 +149,7 @@ void menuCLiente(Loja& loja) {
 	int sel4;
 	do
 	{	
+		system("cls");
 		cout << "|========================================================|" << endl;
 		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
 		cout << "|========================================================|" << endl;

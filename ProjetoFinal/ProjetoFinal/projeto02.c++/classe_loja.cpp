@@ -165,16 +165,19 @@ void Loja::impriTodosProd()
 		cout << "Nenhum Produto cadastrado. " << endl;
 		return;
 	}
-	cout << "________________________________________" << endl;
-    cout << "              Produtos                  " << endl;
-    cout << "________________________________________" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                        Produtos                        |" << endl;
+	cout << "|========================================================|" << endl;
 
 	for(int i = 0; i < totalProdutosGlobal;i++){
-		cout << "ID " << vecProdutosGlobal[i].getId() << " | "
+		cout << "|ID " << vecProdutosGlobal[i].getId() << " | "
 			 << "Nome "<< vecProdutosGlobal[i].getNome() << " | "
 			 << "Quantidade " << vecProdutosGlobal[i].getQuantidade() << " | "
 			 << "Preço € " << vecProdutosGlobal[i].getPreco() << endl;
 	}
+	cout << "|========================================================|" << endl;
 	system("pause"); 
 
 }
@@ -301,9 +304,11 @@ void Loja::criarCliente()
 	cin.ignore();
 	do
 	{
-		cout << "________________________________________" << endl;
-        cout << "              Criar Cliente             " << endl;
-        cout << "________________________________________" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                        Criar Atletas                   |" << endl;
+		cout << "|========================================================|" << endl;
 
 		cout << "Nome do Cliente: ";
         getline(cin, nome);
@@ -363,16 +368,19 @@ void Loja::EditarCliente()
 	int  idcliente, posicao;
 	char valid;
 
-	cout << "________________________________________" << endl;
-	cout << "                                        " << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+	cout << "|========================================================|" << endl;
 	ImprimirTodosClientes();
-	cout << "                                        " << endl;
-	cout << "________________________________________" << endl;
+	cout << "|                                                        |" << endl;
+	cout << "|========================================================|" << endl;
 	do
 	{
-		cout << "________________________________________" << endl;
-		cout << "             Editar cliente             " << endl;
-		cout << "________________________________________" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|                       Editar Atletas                   |" << endl;
+		cout << "|========================================================|" << endl;
 
 		cout << "ID do Cliente: ";
 		while (!(cin >> idcliente) || idcliente <= 0  || ProcurarCliente(idcliente) == -1) {
@@ -388,9 +396,11 @@ void Loja::EditarCliente()
 			cout << "Cliente não encontrado!! ";
 			return;
 		}else{	
-				
-			cout << "Cliente a ser editado: \n" 
-				 << "ID " << vecClientesGlobal[posicao].getid() << " | "
+
+			cout << "|========================================================|" << endl;
+			cout << "|                Cliente a ser editado                   |" << endl;
+			cout << "|========================================================|" << endl;	
+			cout << "|ID " << vecClientesGlobal[posicao].getid() << " | "
 				 << "Nome "<< vecClientesGlobal[posicao].getnome() << " | "
 				 << "telefone " << vecClientesGlobal[posicao].gettelefone() << " | "
 				 << "morada " << vecClientesGlobal[posicao].getmorada() << endl;;
@@ -432,13 +442,17 @@ void Loja::EliminarCliente()
         int remClie = ProcurarCliente(idcliente);
 
         if (remClie >= 0) {
-			cout << "Cliente a ser removido: \n" 
-				<< "ID " << vecClientesGlobal[remClie].getid() << " | "
+			cout << "|========================================================|" << endl;
+			cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+			cout << "|========================================================|" << endl;
+			cout << "|                      Atletas Eliminados                |" << endl;
+			cout << "|========================================================|" << endl;
+			cout<< "ID " << vecClientesGlobal[remClie].getid() << " | "
 				<< "Nome "<< vecClientesGlobal[remClie].getnome() << " | "
 				<< "Telefone " << vecClientesGlobal[remClie].gettelefone() << " | "
 				<< "Morada " << vecClientesGlobal[remClie].getmorada() << endl;
 
-            cout << "Deseja realmente remover o cliente? (s/n) ";
+            cout << "Deseja realmente Eliminar o Atleta? (s/n) ";
             cin >> valid;
 
             if (valid == 's' || valid == 'S') {
@@ -478,16 +492,20 @@ void Loja::ImprimirTodosClientes()
 		cout << "Nenhum Cliente encontrado. " << endl;
 		return;
 	}
-	cout << "________________________________________" << endl;
-    cout << "              Clientes                  " << endl;
-    cout << "________________________________________" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                         Atletas                        |" << endl;
+	cout << "|========================================================|" << endl;
 
 	for(int i = 0; i < totalClientesGlobal;i++){
-		cout << "ID " << vecClientesGlobal[i].getid() << " | "
+		cout << "|ID " << vecClientesGlobal[i].getid() << " | "
 			 << "Nome "<< vecClientesGlobal[i].getnome() << " | "
 			 << "Telefone " << vecClientesGlobal[i].gettelefone() << " | "
-			 << "Morada " << vecClientesGlobal[i].getmorada() << endl;
+			 << "Morada " << vecClientesGlobal[i].getmorada() <<endl;
+			 
 	}
+	cout << "|========================================================|" << endl;
 	system("pause"); 
 
 }
@@ -586,13 +604,14 @@ void Loja::EfetuarVenda()
     double Valorpago;
     char valid, valid1;
     system("cls");
-    cout << "________________________________________" << endl;
-    cout << "            Vendas de Produto           " << endl;
-    cout << "________________________________________" << endl;
-    cout << "                                        " << endl;
-
-    cout << "Para efetuar a venda tem que ter ficha ou criar uma. " << endl;
-    cout << "Se possui ficha digite (s) ou outra tecla para criar. " << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|                       VEnda de produto                 |" << endl;
+	cout << "|========================================================|" << endl;
+    cout << "|  Para realizar a venda tem que ter ficha ou criar uma. |" << endl;
+    cout << "|Se possui ficha digite (s) ou outra tecla para criar.   |" << endl;
+	cout << "|========================================================|" << endl;
     cin >> valid1;
     if (valid1 == 's' || valid1 == 'S') {
         ImprimirTodosClientes();
@@ -626,12 +645,17 @@ void Loja::EfetuarVenda()
             cout << "Produto não encontrado! \n";
             return;
         } else {
-            cout << "Produto: \n " << endl
-                 << "ID: " << vecProdutosGlobal[posicao].getId() << " |"
-                 << "Nome: " << vecProdutosGlobal[posicao].getNome() << " |"
-                 << "Quantidade: " << vecProdutosGlobal[posicao].getQuantidade() << " |"
-                 << "Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |" << endl;
-            cout << "Os Produtos estão com preço de custo, o valor de venda tem um acréscimo de 30% " << endl;
+			cout << "|========================================================|" << endl;
+            cout << "|Produto                                                 |" << endl;
+			cout << "|========================================================|" << endl;
+            cout << "|ID: " << vecProdutosGlobal[posicao].getId() <<"         |"<< endl;
+            cout << "|Nome: " << vecProdutosGlobal[posicao].getNome() <<"         |"<< endl;
+            cout << "|Quantidade: " << vecProdutosGlobal[posicao].getQuantidade()<<"         |"<< endl;
+        	cout << "|Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |" << endl;
+			cout << "|========================================================|" << endl;
+			cout << "|Os Produtos estão com preço de custo,                   |" << endl;			
+            cout << "|O valor de venda tem um acréscimo de 30%.               |" << endl;
+			cout << "|========================================================|" << endl;
         }
 
         cout << "Quantidade que deseja: \n";
@@ -652,13 +676,17 @@ void Loja::EfetuarVenda()
 
             float totalValor = (vecProdutosGlobal[posicao].getPreco() * quantProdu) * 1.3;
 
-            cout << "Checkout da Venda: \n";
-            cout << "Produto: \n " << endl
-                 << "ID: " << vecProdutosGlobal[posicao].getId() << " |"
-                 << "Nome: " << vecProdutosGlobal[posicao].getNome() << " |"
-                 << "Quantidade: " << quantProdu << " |"
-                 << "Preço por unidade: € " << vecProdutosGlobal[posicao].getPreco() << " |"
-                 << "Preço Total: € " << totalValor << endl;
+            cout << "|========================================================|" << endl;
+			cout << "|                Checkout da Venda                       |" << endl;
+			cout << "|========================================================|" << endl;
+            cout << "|Produto                                                 |" << endl;
+			cout << "|========================================================|" << endl;
+            cout << "|ID: " << vecProdutosGlobal[posicao].getId() <<"         |"<< endl;
+			cout << "|Produto: " << vecProdutosGlobal[posicao].getNome() <<"         |"<< endl;
+			cout << "|Qtd: " << quantProdu <<"         |"<< endl;
+			cout << "|Valor unidade: € " << vecProdutosGlobal[posicao].getPreco()<<"         |"<< endl;
+			cout << "|Valor Total: € " << totalValor <<"                               |"<< endl;
+			cout << "|========================================================|" << endl;
 
             cout << "Confirmar Compra: (s|n) \n";
             cin >> valid;
@@ -666,7 +694,7 @@ void Loja::EfetuarVenda()
 			{
                 cout << "Valor a pagar: € " << totalValor << "\n";
 
-                while (true) { // Loop infinito até que o valor seja válido
+                while (true) { // Loop até que o valor seja exato ou superior
                     cout << "Digite o valor pago: € ";
                     while (!(cin >> Valorpago) || Valorpago <= 0) {
                         cout << "Valor inválido. Digite um valor positivo: ";
@@ -689,7 +717,7 @@ void Loja::EfetuarVenda()
                         Venda venda(vecProdutosGlobal[posicao].getNome(), vecClientesGlobal[posicaoCli].getid(),
                                     quantProdu, vecProdutosGlobal[posicao].getPreco(), totalValor);
                         ArmazenarProVendas(venda);
-                        //imprimirTalao(); 
+                        //imprimirTalao(int idvenda); 
                         break; // Sai do loop de pagamento
                     }
                 }
@@ -707,9 +735,14 @@ void Loja::EfetuarVenda()
     cout << "Venda finalizada. Obrigado! \n";
 }
 
-void Loja::imprimirTalao()
+void Loja::imprimirTalao(int idvenda)
 {
-	/*int compra, troco, lucro;
+	/*if(idvenda < 0 || idvenda >= ProcurarCarrinho(idvenda)== -1)
+	{
+		cout << "Vendas nao existe!";
+		return;
+	}
+	int compra, troco, lucro;
 	int FaturaNumero = Numfatura(); 
 	int VenceNumero = NumVencedor();
 
