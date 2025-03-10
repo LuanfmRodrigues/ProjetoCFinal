@@ -159,7 +159,7 @@ void menuCLiente(Loja& loja) {
 		cout << "|========================================================|" << endl;
 		cout << "|              1 - Criar ficha do Atleta                 |" << endl;
 		cout << "|              2 - Eliminar Atleta                       |" << endl;
-		cout << "|              3 - Editar CLiente                        |" << endl;
+		cout << "|              3 - Editar Atleta                         |" << endl;
 		cout << "|              4 - Atletas                               |" << endl;
 		cout << "|              5 - Voltar                                |" << endl;
 		cout << "|========================================================|" << endl;
