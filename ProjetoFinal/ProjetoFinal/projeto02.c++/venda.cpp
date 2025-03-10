@@ -9,10 +9,12 @@ Venda::Venda()
 	quantidade = 0;
     preco = 0.0;
     totaliva = 0.0;
+    valorpago = 0.0;
+    troco = 0.0 ;
 
 }
 
-Venda::Venda(const  string& nome, int idcli, int quantidade, double preco, double totaliva)
+Venda::Venda(const  string& nome, int idcli, int quantidade, double preco, double totaliva,double valorpago, double troco)
 {
     idvenda = contVenda++;
     this->nome = nome;
@@ -20,6 +22,8 @@ Venda::Venda(const  string& nome, int idcli, int quantidade, double preco, doubl
     this->quantidade = quantidade;
     this->preco = preco;
     this->totaliva = totaliva;
+    this->valorpago = valorpago;
+    this->troco = troco;
 }
 
 int Venda::getid() const
@@ -54,6 +58,16 @@ double Venda::gettotaliva() const
     return totaliva;
 }
 
+double Venda::getvalorpago() const
+{
+    return valorpago;
+}
+
+double Venda::gettroco() const
+{
+    return troco;
+}
+
 void Venda::setid(int idvenda)
 {
     this->idvenda = idvenda;
@@ -82,4 +96,14 @@ void Venda::setpreco(double preco)
 void Venda::settotaliva(double totaliva)
 {
     this->totaliva = totaliva;
+}
+
+void Venda::setvalorpago(double valorpago)
+{
+    this->valorpago = valorpago;
+}
+
+void Venda::settroco(double troco)
+{
+    this->troco = troco;
 }

@@ -22,16 +22,16 @@ Loja::Loja()
 	Cliente clien4("rodrigues", "348524758", "rua d");
 	Cliente clien5("Diego","987654367", "rua luz");
 
-    Venda venda1("Camisa Nike", 1, 2, 15.00, 39.00);
-    Venda venda2("Tenis Adidas", 2, 1, 45.00,58.50);
-    Venda venda3("Calça Puma", 3, 3, 25.00, 97.50);
-    Venda venda4("Nano Crossfit", 7, 1, 75.00, 97.50);
-    Venda venda5("Corta salto", 4, 2, 10.00, 26.00);
-    Venda venda6("Estafas Crossfit", 5, 2, 35.00, 91.00);
-    Venda venda7("Camisa Reebok", 1, 1, 10.00, 13.00);
-    Venda venda8("Metcom Crossfit", 2, 1, 75.00, 97.50);
-    Venda venda9("Camisa Nike", 3, 2, 15.00, 39.00);
-    Venda venda10("Tenis Adidas", 4, 1, 45.00, 58.50);
+    Venda venda1("Camisa Nike", 1, 2, 15.00, 39.00,40.00, 1.00);
+    Venda venda2("Tenis Adidas", 2, 1, 45.00,58.50, 60.00, 1.50);
+    Venda venda3("Calça Puma", 3, 3, 25.00, 97.50, 100.00, 2.50);
+    Venda venda4("Nano Crossfit", 7, 1, 75.00, 97.50, 100.00, 2.50);
+    Venda venda5("Corta salto", 4, 2, 10.00, 26.00, 30.00, 4.00);
+    Venda venda6("Estafas Crossfit", 5, 2, 35.00, 91.00, 100.00, 9.00);
+    Venda venda7("Camisa Reebok", 1, 1, 10.00, 13.00, 15.00, 2.00);
+    Venda venda8("Metcom Crossfit", 2, 1, 75.00, 97.50, 100.00, 2.50);
+    Venda venda9("Camisa Nike", 3, 2, 15.00, 39.00, 40.00, 1.00);
+    Venda venda10("Tenis Adidas", 4, 1, 45.00, 58.50, 60.00, 1.50);
  
 	armazenarProduto(prod1);
 	armazenarProduto(prod2);
@@ -561,7 +561,7 @@ void Loja::CheckoutVendas()
 		totalValor += (vecVendas[i].getpreco() * vecVendas[i].getquantidade())*1.3;
 				
 	}
-		
+			
 	cout << "O Valor total da compra é €: " << totalValor << endl;
 	system("pause"); 
 }
@@ -589,7 +589,7 @@ void Loja::tempo()
     time_info = *localtime(&now_time); // Usando localtime
 
     // Exibe a data e hora formatada
-    cout << "Date and time: "
+    cout << "|Date and time: "
          << time_info.tm_mday << "/"
          << time_info.tm_mon + 1 << "/" // Meses começam de 0
          << time_info.tm_year + 1900 << " " // O ano começa de 1900
@@ -601,8 +601,9 @@ void Loja::tempo()
 void Loja::EfetuarVenda() 
 {
     int idproduto, quantProdu, idcliente;
-    double Valorpago;
+    double valorpago;
     char valid, valid1;
+	
     system("cls");
 	cout << "|========================================================|" << endl;
 	cout << "|                      OPEN BOX CROSSFIT                 |" << endl;
@@ -682,13 +683,15 @@ void Loja::EfetuarVenda()
             cout << "|Produto                                                 |" << endl;
 			cout << "|========================================================|" << endl;
             cout << "|ID: " << vecProdutosGlobal[posicao].getId() <<"         |"<< endl;
-			cout << "|Produto: " << vecProdutosGlobal[posicao].getNome() <<"         |"<< endl;
-			cout << "|Qtd: " << quantProdu <<"         |"<< endl;
-			cout << "|Valor unidade: € " << vecProdutosGlobal[posicao].getPreco()<<"         |"<< endl;
-			cout << "|Valor Total: € " << totalValor <<"                               |"<< endl;
+			cout << "|Produto: " << vecProdutosGlobal[posicao].getNome() << endl;
+			cout << "|Qtd: " << quantProdu << endl;
+			cout << "|Valor unidade: € " << vecProdutosGlobal[posicao].getPreco()<< endl;
+			cout << "|Valor Total: € " << totalValor << endl;
 			cout << "|========================================================|" << endl;
 
-            cout << "Confirmar Compra: (s|n) \n";
+			double troco = valorpago - totalValor;
+            
+			cout << "Confirmar Compra: (s|n) \n";
             cin >> valid;
             if (valid == 's' || valid == 'S') 
 			{
@@ -696,28 +699,28 @@ void Loja::EfetuarVenda()
 
                 while (true) { // Loop até que o valor seja exato ou superior
                     cout << "Digite o valor pago: € ";
-                    while (!(cin >> Valorpago) || Valorpago <= 0) {
+                    while (!(cin >> valorpago) || valorpago <= 0) {
                         cout << "Valor inválido. Digite um valor positivo: ";
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     }
 
-                    if (Valorpago < totalValor) {
+                    if (valorpago < totalValor) {
                         cout << "Valor insuficiente. \n"
-                             << "Falta: € " << totalValor - Valorpago << endl;
+                             << "Falta: € " << totalValor - valorpago << endl;
                     } else {
-                        if (Valorpago > totalValor) {
+                        if (valorpago > totalValor) {
                             cout << "Pagamento efetuado com sucesso! \n";
-                            cout << "Troco: € " << Valorpago - totalValor << endl;
+                            cout << "Troco: € " << troco << endl;
                         } else {
                             cout << "Pagamento efetuado com sucesso! \n";
                         }
 
                         // Registrar a venda
                         Venda venda(vecProdutosGlobal[posicao].getNome(), vecClientesGlobal[posicaoCli].getid(),
-                                    quantProdu, vecProdutosGlobal[posicao].getPreco(), totalValor);
+                                    quantProdu, vecProdutosGlobal[posicao].getPreco(), totalValor, valorpago, troco);
                         ArmazenarProVendas(venda);
-                        //imprimirTalao(int idvenda); 
+                        imprimirTalao(); 
                         break; // Sai do loop de pagamento
                     }
                 }
@@ -735,36 +738,47 @@ void Loja::EfetuarVenda()
     cout << "Venda finalizada. Obrigado! \n";
 }
 
-void Loja::imprimirTalao(int idvenda)
+void Loja::imprimirTalao()
 {
-	/*if(idvenda < 0 || idvenda >= ProcurarCarrinho(idvenda)== -1)
-	{
-		cout << "Vendas nao existe!";
-		return;
-	}
-	int compra, troco, lucro;
+	
 	int FaturaNumero = Numfatura(); 
 	int VenceNumero = NumVencedor();
-
-	cout << "Produtos no Carrinho: \n";
-	while (!(cin >> compra) || compra <= 0  || ProcurarCarrinho(compra) == -1) {
-		cout << "ID inválido ou inexistente. ";
-		cout << "Digiti ID valido: ";
-		cin.clear();
-		cin.ignore(INT_MAX, '\n');			
-	}
-	int posicao = ProcurarCarrinho(compra);
-	if(posicao == -1){
-		cout << "Produto não encotrado!! \n";
+	int posicao = TotalVendas -1; // vei pegar a ultima venda no vetor, no caso a ultima venda realizada.
+	cout << "|========================================================|" << endl;
+	cout << "|                         Fatura                         |" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|Produto                                                 |" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|ID Atleta:" << vecVendas[posicao].getidcli() << endl;
+	cout << "|Nome: "<< vecVendas[posicao].getnome() << endl;
+	cout << "|Quantidade: " << vecVendas[posicao].getquantidade() << endl;
+	cout << "|Valor unidade: € " << vecVendas[posicao].getpreco() <<endl;
+	cout << "|Valor s/ iva: " << vecVendas[posicao].getpreco() / 1.23 << endl;
+	cout << "|Total: " << vecVendas[posicao].gettotaliva() << endl;
+	cout << "|Valor pago: "<< vecVendas[posicao].getvalorpago() << endl;
+	cout << "|Troco:  "<< vecVendas[posicao].gettroco() << endl;
+	cout << "|========================================================|" << endl;
+	cout << "| O iva  23%                                             |" << endl;
+	cout << "|========================================================|" << endl;
+	cout << "|Fatura: "<< FaturaNumero << "                                            |"<< endl;
+	cout << "|========================================================|" << endl;
+	cout << "|Numero da sorte: " << VenceNumero <<"                                   |"<< endl;
+	cout << "|========================================================|" << endl;
+	if(FaturaNumero == VenceNumero)
+	{
+		cout << "|                 FATURA PREMIADA                        |" << endl;
+		cout << "|========================================================|" << endl;
+		cout << "|  Sua compra foi preimiada e sua compra saiu de graca!  |" << endl;
+		cout << "|========================================================|" << endl;
+		tempo();
+		cout << "|========================================================|" << endl;
 	}else{
-		cout << "Carrinho: " << endl;
-		cout << "ID Cleinte:" << vecVendas[posicao].getidcli() << " | "
-			<< "Nome: "<< vecVendas[posicao].getnome() << " | "
-			<< "Quantidade: " << vecVendas[posicao].getquantidade() << " | "
-			<< "Preço: € " << vecVendas[posicao].getpreco() << "\n"
-			<< "Subtotal: " << vecVendas[posicao].getpreco() * vecVendas[posicao].getquantidade()<< endl;
-	}*/
 
+		cout << "|  Nao foi dessa vez! sua Fatura nao foi premiada        |" << endl;
+		cout << "|========================================================|" << endl;
+		tempo();
+		cout << "|========================================================|" << endl;
+	}
 }
 
 int Loja::NumVencedor()

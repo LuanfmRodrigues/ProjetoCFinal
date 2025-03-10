@@ -54,7 +54,7 @@ public:
 	//Venda
 	 
     void EfetuarVenda();
-	void imprimirTalao(int idvenda);
+	void imprimirTalao();
     int NumVencedor();
     int Numfatura();
     void ArmazenarProVendas(const Venda &venda);

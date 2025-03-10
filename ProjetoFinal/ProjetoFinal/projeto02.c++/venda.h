@@ -16,12 +16,15 @@ private:
     int idcli;
     int quantidade;
     double preco;
-    double totaliva;    
+    double totaliva;
+    double valorpago;
+    double troco; 
+       
 
 
 public:
     Venda();
-    Venda (const  string& nome, int idcli, int quantidade, double preco, double totaliva);
+    Venda (const  string& nome, int idcli, int quantidade, double preco, double totaliva, double valorrpago, double troco);
 
     int getid()const;
     string getnome() const;	
@@ -29,6 +32,8 @@ public:
 	int getquantidade()const;
     double getpreco()const;
     double gettotaliva()const;
+    double getvalorpago()const;
+    double gettroco()const;
 
 	void setid(int idvenda);
     void setnome(string nome);	
@@ -36,5 +41,7 @@ public:
 	void setquantidade(int quantidade);
     void setpreco(double preco);
     void settotaliva(double totaliva);
+    void setvalorpago(double valorpago);
+    void settroco(double troco);
 }; 
 #endif
