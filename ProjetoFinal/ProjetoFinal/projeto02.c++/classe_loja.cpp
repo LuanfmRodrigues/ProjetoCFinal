@@ -227,7 +227,7 @@ void Loja::RemoverProduto()
 			cout << "|========================================================|" << endl;
         }
         
-        cout << "|Deseja remover mais algum produto? (s/n) ";
+        cout << "|Deseja remover mais algum produto? (s/n)                |" << endl;
 		cout << "|========================================================|" << endl;
         cin >> valid2;
     } while (valid2 == 's' || valid2 == 'S');
@@ -324,7 +324,7 @@ void Loja::criarCliente()
 		cout << "|                        Criar Atletas                   |" << endl;
 		cout << "|========================================================|" << endl;
 
-		cout << "Nome do Atleta: ";
+		cout << "|Nome do Atleta: ";
         getline(cin, nome);
 
 		cout << "|Telefone: ";
@@ -346,8 +346,8 @@ void Loja::criarCliente()
 		getline(cin, morada);
 
 		cout << "|========================================================|" << endl;
-		cout << "|Detalhes do Cliente:                                    |" << endl;
-		cout << "Nome: " << nome << " | Telefone: " << telefone << " | Box: "  << morada<< endl;
+		cout << "|Detalhes do Atleta:                                     |" << endl;
+		cout << "|Nome: " << nome << " | Telefone: " << telefone << " | Box: "  << morada<< endl;
 		cout << "|========================================================|" << endl;
 
 		cout << "|Deseja Criar o Cliente? (s|n)";
@@ -360,14 +360,14 @@ void Loja::criarCliente()
 			
 			Cliente totalClientesGlobal(nome, telefone, morada);
             ArmazenarCliente(totalClientesGlobal);
-			cout << "|Cliente criado com sucesso!                             |" << endl;
+			cout << "|Atleta criado com sucesso!                              |" << endl;
 			cout << "|========================================================|" << endl;
 		} else {
-			cout << "|Cliente não foi criado!                                 |" << endl;
+			cout << "|Atleta não foi criado!                                  |" << endl;
 			cout << "|========================================================|" << endl;
 		}
 
-		cout << "|Deseja criar mais um cliente? (s|n) ";
+		cout << "|Deseja criar mais um Atleta? (s|n) ";
 		cin >> valid4;
 		cin.ignore();
 
